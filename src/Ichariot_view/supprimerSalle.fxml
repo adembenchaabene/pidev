@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ichariot_view.SupprimerSalleController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#22427c" height="471.0" layoutY="67.0" stroke="#22427c" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#22427c" height="89.0" layoutX="-1.0" layoutY="-20.0" stroke="BLACK" strokeType="INSIDE" width="735.0" />
+      <Button fx:id="retour" layoutX="25.0" layoutY="21.0" mnemonicParsing="false" onAction="#goback" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: #22427c;" text="Retour" textFill="WHITE" />
+      <Button fx:id="suppS" layoutX="25.0" layoutY="176.0" mnemonicParsing="false" onAction="#supprimerSalle" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: #3464bc;" text="Supprimer salle" textFill="WHITE" />
+      <ComboBox fx:id="listId" layoutX="25.0" layoutY="126.0" onAction="#getIdS" prefHeight="25.0" prefWidth="89.0" promptText="Id Salle" style="-fx-background-color: #3464bc;">
+         <effect>
+            <Glow level="0.58" />
+         </effect>
+      </ComboBox>
+      <Label fx:id="affiche" layoutX="7.0" layoutY="369.0" prefHeight="168.0" prefWidth="253.0" />
+      <ImageView fitHeight="44.0" fitWidth="60.0" layoutX="665.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/Delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="17.0" fitWidth="38.0" layoutX="16.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/left.png" />
+         </image>
+      </ImageView>
+      <ScrollPane fx:id="scroll" layoutX="282.0" layoutY="105.0" prefHeight="401.0" prefWidth="405.0" styleClass="transparent" stylesheets="@../imgs/style.css">
+         <content>
+            <GridPane fx:id="grid" prefHeight="9.0" prefWidth="17.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
