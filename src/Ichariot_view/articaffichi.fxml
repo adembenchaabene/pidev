@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" onMousePressed="#click" prefHeight="280.0" prefWidth="691.0" styleClass="chosen-fruit-card" stylesheets="@design/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ichariot_view.ArticaffichiController">
+   <children>
+      <Label fx:id="nameLabel" layoutX="133.0" layoutY="72.0" prefHeight="122.0" prefWidth="552.0" stylesheets="@design/style.css" text="                                        Cherry" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLable" layoutX="294.0" layoutY="9.0" prefHeight="50.0" prefWidth="197.0" text="\$0.99">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="15.0" prefHeight="18.0" prefWidth="80.0" text="Titre:">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="115.0" prefHeight="34.0" prefWidth="114.0" text="Contenu :">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="pic" fitHeight="122.0" fitWidth="249.0" layoutX="233.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
