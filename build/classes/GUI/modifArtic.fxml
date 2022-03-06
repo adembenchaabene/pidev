@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="1003.0" prefWidth="1582.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifArticController">
+   <children>
+      <ComboBox fx:id="list" layoutX="115.0" layoutY="460.0" onAction="#getvalue" prefHeight="26.0" prefWidth="206.0" style="-fx-background-color: #3464bc;" />
+      <Separator layoutX="479.0" layoutY="169.0" orientation="VERTICAL" prefHeight="808.0" prefWidth="0.0" />
+      <Label layoutX="13.0" layoutY="394.0" prefHeight="60.0" prefWidth="440.0" text="Choisissez l'id de l'article que vous souhaitez modifier :" textAlignment="CENTER" textFill="#0015ff" underline="true">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="635.0" prefHeight="52.0" prefWidth="62.0" text="contenu :" textAlignment="CENTER" textFill="#0015ff">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="tfcontenu" layoutX="114.0" layoutY="588.0" prefHeight="132.0" prefWidth="271.0" />
+      <TextField fx:id="tftitre" layoutX="114.0" layoutY="770.0" prefHeight="46.0" prefWidth="271.0" promptText="Titre" />
+      <Label layoutX="30.0" layoutY="785.0" prefHeight="20.0" prefWidth="70.0" text="Titre :" textAlignment="CENTER" textFill="#0015ff">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfimage" layoutX="114.0" layoutY="863.0" prefHeight="46.0" prefWidth="271.0" promptText="Image" />
+      <Label layoutX="22.0" layoutY="869.0" prefHeight="38.0" prefWidth="54.0" text="image :" textFill="#0015ff" />
+      <Button fx:id="modifier" layoutX="47.0" layoutY="940.0" mnemonicParsing="false" onAction="#modifierlv" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Modifier" textFill="#f7f2f2" />
+      <Button fx:id="retour" layoutX="323.0" layoutY="939.0" mnemonicParsing="false" onAction="#goback" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Retour" textFill="#fff9f9" />
+      <VBox alignment="CENTER" layoutX="373.0" layoutY="268.0" prefHeight="159.0" prefWidth="100.0" spacing="15.0" />
+      <Pane layoutX="-14.0" layoutY="-4.0" prefHeight="62.0" prefWidth="1612.0" style="-fx-background-color: #22427c;">
+         <children>
+            <Label layoutX="1430.0" layoutY="16.0" prefHeight="34.0" prefWidth="82.0" text="Admin" textFill="#f7f7f7">
+               <font>
+                  <Font name="Cambria Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="63.0" layoutX="1522.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/workstation_24px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="25.0" layoutY="14.0" prefHeight="34.0" prefWidth="82.0" text="Langage :" textFill="#f7f7f7">
+               <font>
+                  <Font name="Cambria Bold Italic" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="98.0" layoutY="19.0" text="Francais" textFill="#f7f7f7" underline="true">
+         <font>
+            <Font name="Cambria Italic" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="60.0" layoutX="364.0" layoutY="971.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/home_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="156.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logooo.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="475.0" layoutY="132.0" prefHeight="891.0" prefWidth="1118.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="826.0" prefWidth="1107.0" styleClass="transparent" stylesheets="@../Images/style.css">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="14.0" prefWidth="13.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <Button layoutX="397.0" layoutY="876.0" mnemonicParsing="false" onAction="#addimage" prefHeight="26.0" prefWidth="26.0" />
+      <ImageView layoutX="398.0" layoutY="877.0">
+         <image>
+            <Image url="@../Images/add_24px.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

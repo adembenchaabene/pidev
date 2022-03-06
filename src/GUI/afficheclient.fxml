@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" onMousePressed="#selectedarticle" prefHeight="252.0" prefWidth="735.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficheclientController">
+   <children>
+      <Label fx:id="nameLabel" layoutX="198.0" layoutY="62.0" prefHeight="130.0" prefWidth="536.0" styleClass="shadow" stylesheets="@../Images/style.css" text="          Cherry" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLable" layoutX="288.0" layoutY="16.0" prefHeight="50.0" prefWidth="379.0" text="\\$0.99" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="23.0" prefHeight="41.0" prefWidth="117.0" text="Titre :  ">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="103.0" prefHeight="34.0" prefWidth="111.0" text="Contenu :">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Button layoutX="669.0" layoutY="210.0" mnemonicParsing="false" onAction="#listercommentaires" prefHeight="7.0" prefWidth="27.0" styleClass="transparent" stylesheets="@../Images/style.css" text="Lister les commentaires" />
+      <Label fx:id="getid" layoutX="612.0" layoutY="51.0" textFill="#5ea9c9" />
+      <ImageView fx:id="pic" fitHeight="118.0" fitWidth="243.0" layoutX="243.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

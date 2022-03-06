@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1003.0" prefWidth="1582.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CommentairesController">
+   <children>
+      <Pane layoutX="1.0" layoutY="-1.0" prefHeight="78.0" prefWidth="1591.0" style="-fx-background-color: #2F5A8E;">
+         <children>
+            <Label layoutX="16.0" layoutY="26.0" prefHeight="27.0" prefWidth="99.0" text="Langage :">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="114.0" layoutY="29.0" text="Francais" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="1441.0" layoutY="20.0" prefHeight="34.0" prefWidth="82.0" text="Client" textFill="#f7f7f7">
+               <font>
+                  <Font name="Cambria Bold Italic" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="64.0" fitWidth="71.0" layoutX="1503.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/article_64px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="162.0" layoutX="3.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logooo.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="1.0" layoutY="195.0" prefHeight="818.0" prefWidth="1158.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="808.0" prefWidth="814.0" styleClass="transparent" stylesheets="@../Images/style.css">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="14.0" prefWidth="13.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ScrollPane>
+            <ScrollPane prefHeight="818.0" prefWidth="336.0">
+               <content>
+                  <GridPane fx:id="grid2" minHeight="-Infinity" minWidth="-Infinity" prefHeight="818.0" prefWidth="62.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <Label fx:id="idgetter" layoutX="156.0" layoutY="87.0" prefHeight="0.0" prefWidth="0.0" textFill="#faf3f3" />
+      <TextArea fx:id="tfcontinu" layoutX="1266.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="142.0" prefWidth="315.0" />
+      <Label layoutX="1313.0" layoutY="189.0" text="Redigez votre commentaire :" textFill="#004ef7">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="1464.0" layoutY="431.0" mnemonicParsing="false" onAction="#suppcomment" prefHeight="56.0" prefWidth="122.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" text="Supprimer" textFill="WHITE" />
+      <Separator layoutX="1147.0" layoutY="91.0" orientation="VERTICAL" prefHeight="914.0" prefWidth="18.0" />
+      <Button layoutX="1163.0" layoutY="437.0" mnemonicParsing="false" onAction="#ajoutcomment" prefHeight="52.0" prefWidth="126.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" text="Ajouter" textFill="WHITE" />
+      <Button layoutX="1318.0" layoutY="432.0" mnemonicParsing="false" onAction="#modificomment" prefHeight="55.0" prefWidth="122.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" text="Modifier" textFill="WHITE" />
+      <Label fx:id="idcmt" layoutX="861.0" layoutY="105.0" textFill="#f7e1e1" />
+      <RadioButton layoutX="908.0" layoutY="123.0" mnemonicParsing="false" onAction="#triercom" text="TRI" />
+      <ImageView fitHeight="157.0" fitWidth="122.0" layoutX="1426.0" layoutY="716.0">
+         <image>
+            <Image url="@../Images/user_100px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="102.0" fitWidth="93.0" layoutX="1223.0" layoutY="748.0">
+         <image>
+            <Image url="@../Images/windows_client_40px.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
