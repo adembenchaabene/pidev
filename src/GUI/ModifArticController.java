@@ -122,7 +122,8 @@ Parent root = FXMLLoader .load(getClass().getResource("/GUI/ArticFXML.fxml"));
         
           ArticleService bb = new ArticleService();
          int value = Integer.parseInt(list.getValue());
-        Article az =new Article(value,tfcontenu.getText(),3,tftitre.getText(),Etat.desarchive,tfimage.getText());
+         
+        Article az =new Article(value,tfcontenu.getText(),3,tftitre.getText(),Etat.desarchive,tfimage.getText(),0);
         bb.modifer(az);
         list();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

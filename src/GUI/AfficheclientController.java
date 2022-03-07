@@ -40,6 +40,8 @@ public class AfficheclientController {
      
     private Article article;
     private MyListener myListener;
+    @FXML
+    private Label labelnblike;
      
     
 
@@ -57,7 +59,7 @@ public class AfficheclientController {
          Image img = new Image(f.toURI().toString());
          pic.setImage(img);
          getid.setText(String.valueOf(article.getIdArticle()));  
-          
+          labelnblike.setText("Nb like: "+article.getNbrreact());
                  }
 
     @FXML

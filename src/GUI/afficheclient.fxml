@@ -31,5 +31,6 @@
       <Button layoutX="669.0" layoutY="210.0" mnemonicParsing="false" onAction="#listercommentaires" prefHeight="7.0" prefWidth="27.0" styleClass="transparent" stylesheets="@../Images/style.css" text="Lister les commentaires" />
       <Label fx:id="getid" layoutX="612.0" layoutY="51.0" textFill="#5ea9c9" />
       <ImageView fx:id="pic" fitHeight="118.0" fitWidth="243.0" layoutX="243.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelnblike" layoutX="454.0" layoutY="262.0" prefHeight="17.0" prefWidth="199.0" text="Label" />
    </children>
 </AnchorPane>

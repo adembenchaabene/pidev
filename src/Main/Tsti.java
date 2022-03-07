@@ -27,8 +27,8 @@ public class Tsti extends Application {
     
    @Override
    public void start(Stage primaryStage) throws Exception{
-        //Parent root  = FXMLLoader.load(getClass().getResource("/GUI/ArticFXML.fxml"));
-        Parent root  = FXMLLoader.load(getClass().getResource("/GUI/commentaires.fxml"));
+        Parent root  = FXMLLoader.load(getClass().getResource("/GUI/ArticFXML.fxml"));
+        //Parent root  = FXMLLoader.load(getClass().getResource("/GUI/commentaires.fxml"));
          //Parent root  = FXMLLoader.load(getClass().getResource("/GUI/stats.fxml"));
         primaryStage.setTitle("I_chariot");
         primaryStage.setScene(new Scene(root));

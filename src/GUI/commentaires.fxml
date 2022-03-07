@@ -96,5 +96,7 @@
             <Image url="@../Images/windows_client_40px.png" />
          </image>
       </ImageView>
+      <Button layoutX="1240.0" layoutY="630.0" mnemonicParsing="false" onAction="#likearticle" text="Like" />
+      <Button layoutX="1414.0" layoutY="630.0" mnemonicParsing="false" onAction="#dislikearticle" text="Dislike" />
    </children>
 </AnchorPane>

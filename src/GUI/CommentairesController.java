@@ -8,15 +8,18 @@ package GUI;
 import Entites.Article;
 import services.MyListener;
 import Entites.Commentaire;
+import Entites.ReactArticle;
 import services.ArticleService;
 import services.CommentaireService;
 import java.awt.Event;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,6 +37,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import services.Reactservice;
 
 /**
  * FXML Controller class
@@ -62,6 +66,7 @@ public class CommentairesController implements Initializable {
      CommentaireService cws = new CommentaireService();
      Article article;
      List<Commentaire> commentaires = cws.afficher();
+     Reactservice rs=new Reactservice();
 
     /**
      * Initializes the controller class.
@@ -69,62 +74,8 @@ public class CommentairesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
           
-          grid2.getChildren().clear();
           
-          
-          ArticleService bb = new ArticleService();
-          //affiche.setText(bb.afficher().toString());
-         List<Article> articles = bb.afficher();
-          
-         
-         if(articles.size() > 0){
-          selectedArticle(articles.get(0));
-          myListener = new MyListener() {
-              @Override
-              public void onClickListener(Article article) {
-                selectedArticle(article);
-              } 
-
-              @Override
-              public void onClickListener2(Commentaire commentaire) {
-                  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-              }
-         };
-                  }
-        int column = 0;
-        int row = 1;
-        
-        try {
-            for (int i = 0; i < articles.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/GUI/afficheclient.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-
-                AfficheclientController itemController = fxmlLoader.getController();
-                itemController.setData1(articles.get(i),myListener);
-
-                if (column == 1) {
-                    column = 0;
-                    row++;
-                }
-
-                grid.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
-                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid.setMaxWidth(Region.USE_PREF_SIZE);
-
-                //set grid height
-                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid.setMaxHeight(Region.USE_PREF_SIZE);
-
-                GridPane.setMargin(anchorPane, new Insets(10));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-       
+       refresh();
     
     }    
     
@@ -208,7 +159,7 @@ public class CommentairesController implements Initializable {
 
     @FXML
     void modificomment(ActionEvent event) {
-        cws.modifer(new Commentaire(Integer.parseInt(idcmt.getText()),1,Integer.parseInt(idgetter.getText()),tfcontinu.getText()));
+        cws.modifer(new Commentaire(Integer.parseInt(idcmt.getText()),44444446,Integer.parseInt(idgetter.getText()),tfcontinu.getText()));
      
    
     }
@@ -225,6 +176,75 @@ public class CommentairesController implements Initializable {
         
     }
 
+    @FXML
+    private void likearticle(ActionEvent event) {
+        
+        rs.putLikeToPost(44444446, Integer.parseInt(idgetter.getText()));
+        refresh();
+    }
 
+    @FXML
+    private void dislikearticle(ActionEvent event) {
+        rs.putUnLikeToPost(44444446, Integer.parseInt(idgetter.getText()));
+        refresh();
+    }
+
+public void refresh(){
+    grid2.getChildren().clear();
+          
+          
+          ArticleService bb = new ArticleService();
+          //affiche.setText(bb.afficher().toString());
+         List<Article> articles = bb.afficher();
+          
+         
+         if(articles.size() > 0){
+          selectedArticle(articles.get(0));
+          myListener = new MyListener() {
+              @Override
+              public void onClickListener(Article article) {
+                selectedArticle(article);
+              } 
+
+              @Override
+              public void onClickListener2(Commentaire commentaire) {
+                  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+              }
+         };
+                  }
+        int column = 0;
+        int row = 1;
+        
+        try {
+            for (int i = 0; i < articles.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/GUI/afficheclient.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                AfficheclientController itemController = fxmlLoader.getController();
+                itemController.setData1(articles.get(i),myListener);
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+}
     
 }

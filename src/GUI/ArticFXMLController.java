@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
@@ -83,6 +86,7 @@ public class ArticFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        recherche_avance();
     }    
       @FXML
     void addArticle(ActionEvent event) {
@@ -237,6 +241,114 @@ Stage stage = (Stage)anchorPane.getScene().getWindow();
             tfimage.setText(file.getName());
         }
     }
+    public void recherche_avance(){
+        
+        ArticleService bb = new ArticleService();
+        ObservableList<Article> list=FXCollections.observableArrayList(bb.afficher());
+        FilteredList<Article> filtereddata=new FilteredList<>(list,b->true);
+        int column1 = 0;
+        int row1 = 1;
+        try {
+            for (int i = 0; i < filtereddata.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/GUI/articaffichi.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ArticaffichiController itemController = fxmlLoader.getController();
+                itemController.setData(filtereddata.get(i));
+
+                if (column1 == 1) {
+                    column1 = 0;
+                    row1++;
+                }
+
+                grid.add(anchorPane, column1++, row1); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        textR.textProperty().addListener((observable,oldvalue,newValue) -> {
+            filtereddata.setPredicate(article->{
+                if(newValue==null||newValue.isEmpty()){
+                    return true;
+                }
+                String lowercasefilter=newValue.toLowerCase();
+                if(article.getContenu().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                else if(article.getTitre().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                
+                else if(article.getImage().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                
+                
+                else if(String.valueOf(article.getNbrreact()).toString().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                
+                else{
+                    return false;
+                }
+                
+            });
+            grid.getChildren().clear();
+          
+          //affiche.setText(bb.afficher().toString());
+         
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < filtereddata.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/GUI/articaffichi.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ArticaffichiController itemController = fxmlLoader.getController();
+                itemController.setData(filtereddata.get(i));
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        });
+        
+        
+        
+        
+    }
+   
 }
    
 

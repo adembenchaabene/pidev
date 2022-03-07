@@ -61,7 +61,8 @@ List<Article> articles = new ArrayList<>();
                         result.getInt("auteur"),
                         result.getString("titre"),
                         Etat.valueOf( result.getString("Etat")),
-                        result.getString("image")
+                        result.getString("image"),
+                        result.getInt("nbrreact")
                 
                         
                 ));
@@ -92,7 +93,7 @@ if(Etat.valueOf(result.getString("Etat"))== Etat.supprimer){
     System.out.println("Article supprimer");
 }
 else {
- query = "UPDATE article set  `contenu`='"+C.getContenu()+"', `titre`='"+C.getTitre()+"',`image`='"+C.getImage()+"'where idArticle ='"+C.getIdArticle()+"'";
+ query = "UPDATE article set  `contenu`='"+C.getContenu()+"', `titre`='"+C.getTitre()+"',`image`='"+C.getImage()+"', `nbrreact`='"+C.getNbrreact()+"' where idArticle ='"+C.getIdArticle()+"'";
          stmt.executeUpdate(query);
          System.out.println("INFO: Article Updated.");
 }
@@ -141,7 +142,8 @@ List<Article> articles = new ArrayList<>();
                         result.getInt("auteur"),
                         result.getString("titre"),
                         Etat.valueOf( result.getString("Etat")),
-                        result.getString("image")
+                        result.getString("image"),
+                        result.getInt("nbrreact")
                 
                         
                 ));
@@ -170,7 +172,36 @@ List<Article> articles = new ArrayList<>();
         }
     }
      
-   
+   public Article findById(int id) {
+Article a = new Article();
+        String query = "SELECT * FROM `article` WHERE `Etat`<>'supprimer AND idArticle';";
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+
+            while(result.next()) {
+                a=(new Article(
+                        result.getInt("idArticle"),
+                        result.getString("contenu"),
+                        result.getInt("auteur"),
+                        result.getString("titre"),
+                        Etat.valueOf( result.getString("Etat")),
+                        result.getString("image"),
+                        result.getInt("nbrreact")
+                
+                        
+                ));
+                
+            }
+          return a;
+          //  System.out.println("test");
+           //System.out.println(articles);
+           // Debugger.log("INFO: Successfully fetched all users.");
+
+        } catch (SQLException ex) {
+          System.out.println(ex.getMessage());
+        }
+        return null;    }
     
     
 }
