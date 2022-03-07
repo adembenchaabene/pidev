@@ -5,7 +5,7 @@
  */
 package services;
 
-import entities.Livraison;
+import Entites.Livraison;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +16,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utlis.MyDB;
+import utils.DBConnection;
+
 
 /**
  *
@@ -26,14 +27,14 @@ public class ServiceLivraison {
     Connection cnx;
 
     public ServiceLivraison() {
-        cnx = MyDB.getInstance().getConnection();
+        cnx = DBConnection.getInstance().getCon();
     }
 
 
     public void ajout(Livraison l) {
         try {
-            String req = "insert into livraison (type,adresse,id_produit,id_livreur,etat) values"
-                    + " ( '" + l.getType() + "', '" + l.getIdAdresse() + "', '" + l.getIdproduit()+ "', '" + l.getIdlivreur()+ "', '" +  l.getEtat()+ "')";
+            String req = "insert into livraison (type,adresse,id_produit,id_livreur,etat,iduser) values"
+                    + " ( '" + l.getType() + "', '" + l.getIdAdresse() + "', '" + l.getIdproduit()+ "', '" + l.getIdlivreur()+ "', '" +  l.getEtat()+ "','"+l.getIduser()+"')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -97,10 +98,11 @@ public class ServiceLivraison {
         }
         return list;
     }
- public List <Livraison> recherche(String typ) {
-List<Livraison> list = new ArrayList<>();
+    
+    public List<Livraison> afficherliv() {
+         List<Livraison> list = new ArrayList<>();
         try {
-            String req ="select * from livraison";
+            String req = "select * from livraison where iduser = " + 2;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -114,17 +116,45 @@ List<Livraison> list = new ArrayList<>();
                 p.setEtat(rs.getInt("etat"));
                 list.add(p);
             }
-             list.stream()
-                .filter(x-> x.getType().startsWith(typ))
-                .forEach(x->System.out.println(x));
-             
+            
         } catch (SQLException ex) {
             Logger.getLogger(ServiceLivraison.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
-          
+        return list;
+    }
+    public List<Livraison> afficheretat() {
+         List<Livraison> list = new ArrayList<>();
+       try {
+            cnx = DBConnection.getInstance().getCon();
+            String req = " select * from livraison where etat = " + 0;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery(req);
+            while(rs.next()){
+                Livraison p = new Livraison();
+                p.setIdLivraison(rs.getInt(1));
+                p.setType(rs.getString("type"));
+                p.setIdAdresse(rs.getInt("adresse"));
+                p.setIdproduit(rs.getInt("id_produit"));
+                p.setIdlivreur(rs.getInt("id_livreur"));
+                p.setEtat(rs.getInt("etat"));
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceLivraison.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
     
+ public List <Livraison> recherche(String typ) {
+
+List<Livraison> livraisons = afficher();
+        livraisons.stream().filter(x -> x.getType().contains(typ)).forEach(System.out::println);
+         
+        return livraisons;
  }
+    
+ 
  
  public List <Livraison> tri() {
 List<Livraison> list = new ArrayList<>();

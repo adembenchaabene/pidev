@@ -5,7 +5,7 @@
  */
 package services;
 
-import entities.Adresse;
+import Entites.Adresse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utlis.MyDB;
+import utils.DBConnection;
 
 /**
  *
@@ -26,19 +26,28 @@ public class ServiceAdresse {
        Connection cnx;
 
     public ServiceAdresse() {
-        cnx = MyDB.getInstance().getConnection();
+        cnx = DBConnection.getInstance().getCon();
     }
 
 
-    public void ajout(Adresse l) {
+    public int ajout(Adresse l) {
+         int risultato=-1;
         try {
-            String req = "insert into adresse (ville,rue,numMaison) values"
-                    + " ( '" + l.getVille() + "', '" + l.getRue() + "', '" + l.getNumMaison()+ "')";
+            String req = "insert into adresse (ville,rue,numMaison,iduser) values"
+                    + " ( '" + l.getVille() + "', '" + l.getRue() + "', '" + l.getNumMaison()+"', '" +2+ "')" ;
             Statement st = cnx.createStatement();
-            st.executeUpdate(req);
+            st.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = st.getGeneratedKeys();
+        if (rs.next()){
+            risultato=rs.getInt(1);
+        }
+        rs.close();
+        
+            System.out.println(risultato);
         } catch (SQLException ex) {
             Logger.getLogger(ServiceAdresse.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return risultato;
         
     }
 
@@ -94,10 +103,10 @@ public class ServiceAdresse {
         return list;
     }
     
-     public List <Adresse> recherche(String add){
- List<Adresse> list = new ArrayList<>();
+     public List<Adresse> afficheradd() {
+        List<Adresse> list = new ArrayList<>();
         try {
-            String req ="select * from adresse";
+            String req = " select * from adresse where iduser = " + 2;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             
@@ -109,14 +118,21 @@ public class ServiceAdresse {
                 p.setNumMaison(rs.getInt("numMaison"));
                 list.add(p);
             }
-             list.stream()
-                .filter(x-> x.getVille().contains(add))
-                .forEach(x->System.out.println(x));
-             
+            
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceLivraison.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceAdresse.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return list;
+    }
+    
+     public List <Adresse> recherche(String add){
+
+
+List<Adresse> adresses = afficher();
+        adresses.stream().filter(x -> x.getVille().contains(add)).forEach(System.out::println);
+         
+        return adresses;
+ 
           
     
  }
@@ -139,7 +155,7 @@ List<Adresse> list = new ArrayList<>();
              
              list.stream().sorted(Comparator.comparingInt(Adresse::getId_adresse).reversed()).forEach(System.out::println);
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceLivraison.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceAdresse.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
           

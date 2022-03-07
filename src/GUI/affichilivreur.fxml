@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane onMousePressed="#click" prefHeight="251.0" prefWidth="464.0" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AffichilivreurController">
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+   <children>
+      <Label layoutX="25.0" layoutY="76.0" prefHeight="18.0" prefWidth="74.0" text="Nom :" />
+      <Label fx:id="nom" layoutX="86.0" layoutY="76.0" prefHeight="18.0" prefWidth="198.0" />
+      <Label layoutX="21.0" layoutY="116.0" prefHeight="18.0" prefWidth="84.0" text="Prenom: " />
+      <Label fx:id="prenom" layoutX="87.0" layoutY="116.0" prefHeight="18.0" prefWidth="197.0" />
+      <Label layoutX="21.0" layoutY="161.0" prefHeight="18.0" prefWidth="63.0" text="Numero:" />
+      <Label fx:id="num" layoutX="86.0" layoutY="161.0" prefHeight="18.0" prefWidth="173.0" />
+      <Label layoutX="21.0" layoutY="210.0" prefHeight="18.0" prefWidth="43.0" text="Email:" />
+      <Label fx:id="email" layoutX="81.0" layoutY="210.0" prefHeight="18.0" prefWidth="209.0" textAlignment="CENTER" />
+      <Label layoutX="25.0" layoutY="31.0" text="Id:" />
+      <Label fx:id="id" layoutX="83.0" layoutY="30.0" prefHeight="18.0" prefWidth="43.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AffecterController">
+   <children>
+      <Label fx:id="affichelivraison" layoutX="354.0" layoutY="105.0" prefHeight="26.0" prefWidth="24.0" />
+      <ComboBox fx:id="livraison" layoutX="691.0" layoutY="635.0" prefWidth="150.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" />
+      <ComboBox fx:id="livreur" layoutX="110.0" layoutY="648.0" prefWidth="150.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" />
+      <Label fx:id="affliv" layoutX="294.0" layoutY="104.0" prefHeight="58.0" prefWidth="30.0" />
+      <Button fx:id="affecter" layoutX="379.0" layoutY="672.0" mnemonicParsing="false" onAction="#affecterliv" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: #22427c;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Affecter" textFill="#fffcfc" />
+      <Pane layoutX="-3.0" prefHeight="94.0" prefWidth="1006.0" style="-fx-background-color: #22427c;">
+         <children>
+            <Button fx:id="retourr" layoutX="38.0" layoutY="35.0" mnemonicParsing="false" onAction="#retourner" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" textFill="#fffefe" />
+            <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="78.0" layoutY="35.0">
+               <image>
+                  <Image url="@../Images/retour.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="880.0" layoutY="22.0">
+               <image>
+                  <Image url="@../Images/livreur.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER" layoutX="500.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="485.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="428.0" prefWidth="430.0" styleClass="transparent" stylesheets="@../../../../../Desktop/Fruits-Market-master/FruitMarket/src/values/style.css">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="31.0" layoutY="103.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="447.0">
+         <children>
+            <ScrollPane fx:id="scroll1" prefHeight="322.0" prefWidth="422.0" styleClass="transparent" stylesheets="@../../../../../Desktop/Fruits-Market-master/FruitMarket/src/values/style.css">
+               <content>
+                  <GridPane fx:id="grid1" prefHeight="0.0" prefWidth="0.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <Label layoutX="48.0" layoutY="625.0" prefHeight="18.0" prefWidth="293.0" text="Choisir le livreur pour affecter la livraison">
+         <font>
+            <Font name="Broadway" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="673.0" layoutY="615.0" prefHeight="18.0" prefWidth="293.0" text="Choisir la livraison a affecté">
+         <font>
+            <Font name="Broadway" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
