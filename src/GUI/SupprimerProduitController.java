@@ -8,7 +8,7 @@ package GUI;
 
 import Entites.Produit;
 import services.ProduitService;
-import Util.DBConnection;
+import utils.DBConnection;
 import static java.awt.PageAttributes.MediaType.C;
 import java.io.IOException;
 import java.net.URL;

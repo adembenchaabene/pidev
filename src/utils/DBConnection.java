@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Util;
-
+package utils;
 
 import java.sql.DriverManager;
 import java.sql.Connection;

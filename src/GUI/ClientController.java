@@ -9,7 +9,7 @@ import Entites.Categorie;
 import Entites.Produit;
 import services.CategorieService;
 import services.ProduitService;
-import Util.DBConnection;
+import utils.DBConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
