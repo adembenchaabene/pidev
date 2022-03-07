@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_model/Commentaire.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/ArticaffichiController.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/graphcomment.fxml</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/ArticFXMLController.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/ModifArticController.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_service/I_chariot.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_service/ArticleService.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/AfficheclientController.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_service/Reactservice.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/tsti/Tsti.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/tsti/Pidevjava.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/GraphcommentController.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/CommentairesController.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_service/MyListener.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_utils/DBConnection.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_service/CommentaireService.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/design/style.css</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/SupprimArtiController.java</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/stats.fxml</file>
+            <file>file:/C:/Users/chaab/Desktop/3eme/java/tsti/src/Ichariot_view/StatsController.java</file>
+        </group>
+    </open-files>
+</project-private>

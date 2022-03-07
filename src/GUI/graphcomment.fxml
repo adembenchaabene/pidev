@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane2" onMouseClicked="#selectedCmt" prefHeight="246.0" prefWidth="280.0" styleClass="free-delivery-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GraphcommentController">
+   <children>
+      <Label layoutX="6.0" layoutY="93.0" text="commentaire :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="contenuCommentaire" layoutX="111.0" layoutY="65.0" prefHeight="69.0" prefWidth="163.0" text="contenuCommentaire" textAlignment="CENTER" />
+      <Label layoutX="15.0" layoutY="191.0" prefHeight="14.0" prefWidth="35.0" text="Date :" textAlignment="CENTER">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font></Label>
+      <Label fx:id="datepub" layoutX="111.0" layoutY="174.0" prefHeight="50.0" prefWidth="110.0" text="datepub" textAlignment="CENTER" />
+      <Label fx:id="getCmtid" layoutX="136.0" layoutY="17.0" prefHeight="15.0" prefWidth="0.0" textFill="#e1e1e1" />
+      <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="65.0" layoutY="4.0">
+         <image>
+            <Image url="@../Images/voice_recognition_80px.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="124.0" layoutY="10.0">
+         <image>
+            <Image url="@../Images/discussion_forum_40px.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
