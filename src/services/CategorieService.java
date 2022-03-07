@@ -52,7 +52,7 @@ String query = "UPDATE categorie set  `nomCateg`='"+C.getNomCateg()+"', `descrip
         }
     }
 
-    @Override
+    
     public void supprimer(int id) {
 String query = "DELETE from categorie where idCateg ='"+id+"'";
         try {
@@ -142,6 +142,11 @@ String query = "DELETE from categorie where idCateg ='"+id+"'";
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void supprimer(Categorie C) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

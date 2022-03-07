@@ -13,7 +13,7 @@
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.25.jar" size="2428320" download="eager" />
-    <jar href="tsti.jar" size="82733" download="eager" />
+    <jar href="tsti.jar" size="278915" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="tsti" >
     <param name="requiredFXVersion" value="8.0+"/>

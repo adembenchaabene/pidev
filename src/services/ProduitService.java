@@ -55,7 +55,7 @@ String query = "UPDATE produit set  `nomProduit`='"+C.getNomProduit()+"', `quant
         }
     }
 
-    @Override
+    
     public void supprimer(int id) {
  String query = "DELETE from produit where idProduit ='"+id+"'";
         try {
@@ -151,6 +151,11 @@ List<Produit> Produits = new ArrayList<>();
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void supprimer(Produit C) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

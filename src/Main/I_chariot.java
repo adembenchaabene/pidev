@@ -29,10 +29,10 @@ public class I_chariot extends Application {
         this.stage = primaryStage;
         try {
             
-           // parent = FXMLLoader.load(getClass().getResource("/View/CategorieFXML.fxml"));
-          // parent = FXMLLoader.load(getClass().getResource("/View/StatistiqueProduit.fxml"));
+            //parent = FXMLLoader.load(getClass().getResource("/GUI/CategorieFXML.fxml"));
+          // parent = FXMLLoader.load(getClass().getResource("/GUI/StatistiqueProduit.fxml"));
           parent = FXMLLoader.load(getClass().getResource("/GUI/ProduitFXML.fxml"));
-      //parent = FXMLLoader.load(getClass().getResource("/View/Client.fxml"));
+      //parent = FXMLLoader.load(getClass().getResource("/GUI/Client.fxml"));
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
