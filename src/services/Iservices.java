@@ -1,6 +1,6 @@
 package services;
 
-import Modules.User;
+import Entites.User;
 import java.util.List;
 
 public interface Iservices<T>

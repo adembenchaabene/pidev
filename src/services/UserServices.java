@@ -5,11 +5,11 @@
  */
 package services;
 
-import Modules.Admin;
-import Modules.Client;
-import Modules.User;
-import Utils.BdConnection;
-import Utils.Enums.Roles;
+import Entites.Admin;
+import Entites.Client;
+import Entites.User;
+import utils.DBConnection;
+import Entites.Roles;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -34,8 +34,8 @@ public class UserServices implements Iservices<User> {
     private static UserServices instance;
 
     public UserServices() {
-        BdConnection connect = BdConnection.getInstance();
-        this.connection = connect.cnx;
+        DBConnection connect = DBConnection.getInstance();
+        this.connection = connect.getCon();
     }
 
     public static UserServices getInstance() {
