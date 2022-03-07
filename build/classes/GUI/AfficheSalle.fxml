@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="180.0" prefWidth="313.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficheSalleController">
+   <children>
+      <Label layoutX="17.0" layoutY="110.0" text="Nom Salle:" />
+      <Label layoutX="17.0" layoutY="154.0" text="Capacité:" />
+      <Label layoutX="19.0" layoutY="50.0" text="Image:" />
+      <Label layoutX="209.0" layoutY="154.0" text="Prix:" />
+      <Label fx:id="idNom" layoutX="90.0" layoutY="109.0" prefHeight="17.0" prefWidth="165.0" />
+      <Label fx:id="idCap" layoutX="90.0" layoutY="153.0" prefHeight="17.0" prefWidth="49.0" />
+      <Label fx:id="idPrix" layoutX="246.0" layoutY="154.0" prefHeight="17.0" prefWidth="36.0" />
+      <Label fx:id="idImg" layoutX="76.0" layoutY="20.0" prefHeight="47.0" prefWidth="78.0" />
+   </children>
+</AnchorPane>
