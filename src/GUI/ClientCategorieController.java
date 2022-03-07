@@ -43,7 +43,7 @@ import javafx.stage.Stage;
  *
  * @author compu serv
  */
-public class ClientController implements Initializable {
+public class ClientCategorieController implements Initializable {
 
     /**
      * Initializes the controller class.

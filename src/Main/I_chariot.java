@@ -31,8 +31,8 @@ public class I_chariot extends Application {
             
             //parent = FXMLLoader.load(getClass().getResource("/GUI/CategorieFXML.fxml"));
           // parent = FXMLLoader.load(getClass().getResource("/GUI/StatistiqueProduit.fxml"));
-          parent = FXMLLoader.load(getClass().getResource("/GUI/ProduitFXML.fxml"));
-      //parent = FXMLLoader.load(getClass().getResource("/GUI/Client.fxml"));
+          //parent = FXMLLoader.load(getClass().getResource("/GUI/ProduitFXML.fxml"));
+      parent = FXMLLoader.load(getClass().getResource("/GUI/ClientAdresse.fxml"));
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
