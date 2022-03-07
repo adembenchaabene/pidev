@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SupprimerController">
+   <children>
+      <ComboBox fx:id="list" layoutX="23.0" layoutY="200.0" onAction="#getname" prefHeight="26.0" prefWidth="206.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" />
+      <Button fx:id="supp" layoutX="41.0" layoutY="302.0" mnemonicParsing="false" onAction="#supprimerliv" prefHeight="26.0" prefWidth="170.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Supprimer" textFill="#fffdfd" />
+      <Label fx:id="affichel" layoutX="276.0" layoutY="92.0" prefHeight="48.0" prefWidth="58.0" />
+      <Pane layoutY="-3.0" prefHeight="83.0" prefWidth="800.0" style="-fx-background-color: #22427c;">
+         <children>
+            <Button fx:id="retour" layoutX="24.0" layoutY="29.0" mnemonicParsing="false" onAction="#goback" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" textFill="#fff9f9" />
+            <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="62.0" layoutY="29.0">
+               <image>
+                  <Image url="@../Images/retour.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="723.0" layoutY="24.0">
+               <image>
+                  <Image url="@../Images/waste.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER" layoutX="258.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="515.0">
+         <children>
+            <ScrollPane fx:id="scroll" prefHeight="322.0" prefWidth="594.0" styleClass="transparent" stylesheets="@../../../../../Desktop/Fruits-Market-master/FruitMarket/src/values/style.css">
+               <content>
+                  <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <Label layoutX="33.0" layoutY="131.0" prefHeight="18.0" prefWidth="209.0" text="Veuillez choisir le livreur">
+         <font>
+            <Font name="Broadway" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

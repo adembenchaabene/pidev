@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="350.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Affichilivraison2Controller">
+   <children>
+      <Label fx:id="labeltype" layoutX="107.0" layoutY="91.0" prefHeight="18.0" prefWidth="134.0" />
+      <Label fx:id="labeletat" layoutX="107.0" layoutY="126.0" prefHeight="18.0" prefWidth="134.0" stylesheets="@../Images/style.css" />
+      <Label layoutX="52.0" layoutY="62.0" text="Num :">
+         <font>
+            <Font name="Broadway" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="93.0" text="Type :">
+         <font>
+            <Font name="Broadway" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="128.0" text="Etat:">
+         <font>
+            <Font name="Broadway" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="id" layoutX="107.0" layoutY="60.0" prefHeight="18.0" prefWidth="40.0" />
+      <Label layoutX="11.0" layoutY="14.0" text="Livraison" underline="true">
+         <font>
+            <Font name="Broadway" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
