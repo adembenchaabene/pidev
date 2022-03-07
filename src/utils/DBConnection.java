@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package utils;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;

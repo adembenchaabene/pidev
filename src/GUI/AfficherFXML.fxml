@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="205.0" prefWidth="415.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherFXMLController">
+   <children>
+      <Label layoutX="27.0" layoutY="25.0" text="Nom" />
+      <Label layoutX="31.0" layoutY="137.0" text="Prix" />
+      <Label layoutX="27.0" layoutY="56.0" text="Description" />
+      <Label layoutX="27.0" layoutY="100.0" text="Quantite" />
+      <Label layoutX="23.0" layoutY="174.0" text="Image" />
+      <Label fx:id="labelnom" layoutX="90.0" layoutY="25.0" prefHeight="21.0" prefWidth="289.0" />
+      <Label fx:id="labeldescription" layoutX="122.0" layoutY="56.0" prefHeight="21.0" prefWidth="278.0" />
+      <Label fx:id="labelquantite" layoutX="107.0" layoutY="100.0" prefHeight="21.0" prefWidth="212.0" />
+      <Label fx:id="labelimage" layoutX="85.0" layoutY="174.0" prefHeight="21.0" prefWidth="212.0" />
+      <Label fx:id="labelprix" layoutX="72.0" layoutY="137.0" prefHeight="21.0" prefWidth="325.0" />
+   </children>
+</AnchorPane>

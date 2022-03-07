@@ -17,4 +17,5 @@ public interface I_chariot <T>{
     public List <T> afficher();
     public void modifer(T C);
     public void supprimer (T C);
+
 }
