@@ -149,7 +149,7 @@ public class CommentairesController implements Initializable {
     @FXML
     void ajoutcomment(ActionEvent event) {
          
-        Commentaire ccl = new Commentaire(1,44444446,Integer.parseInt(idgetter.getText()),tfcontinu.getText());
+        Commentaire ccl = new Commentaire(1,LoginController.idglobal,Integer.parseInt(idgetter.getText()),tfcontinu.getText());
         cws.ajouteer(ccl);
         //tfcontinu.getText();
         tfcontinu.setText("");
@@ -159,7 +159,7 @@ public class CommentairesController implements Initializable {
 
     @FXML
     void modificomment(ActionEvent event) {
-        cws.modifer(new Commentaire(Integer.parseInt(idcmt.getText()),44444446,Integer.parseInt(idgetter.getText()),tfcontinu.getText()));
+        cws.modifer(new Commentaire(Integer.parseInt(idcmt.getText()),LoginController.idglobal,Integer.parseInt(idgetter.getText()),tfcontinu.getText()));
      
    
     }
@@ -179,13 +179,13 @@ public class CommentairesController implements Initializable {
     @FXML
     private void likearticle(ActionEvent event) {
         
-        rs.putLikeToPost(44444446, Integer.parseInt(idgetter.getText()));
+        rs.putLikeToPost(LoginController.idglobal, Integer.parseInt(idgetter.getText()));
         refresh();
     }
 
     @FXML
     private void dislikearticle(ActionEvent event) {
-        rs.putUnLikeToPost(44444446, Integer.parseInt(idgetter.getText()));
+        rs.putUnLikeToPost(LoginController.idglobal, Integer.parseInt(idgetter.getText()));
         refresh();
     }
 

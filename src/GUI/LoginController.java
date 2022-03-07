@@ -6,6 +6,7 @@
 package GUI;
 
 import Entites.Roles;
+import Entites.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,6 +51,7 @@ public class LoginController implements Initializable {
     @FXML
     private Label loginMessageLabel1;
     UserServices us=new UserServices();
+    public static int idglobal;
 
     /**
      * Initializes the controller class.
@@ -62,7 +64,9 @@ public class LoginController implements Initializable {
     @FXML
     private void loginButtonOnAction(ActionEvent event) {
         if(us.checklogin(usernameTextFiled.getText(), enterPasswordField.getText())){
-            if(us.findByMail(usernameTextFiled.getText()).getRole().equals(Roles.Admin)){
+            User u=us.findByMail(usernameTextFiled.getText());
+            idglobal=u.getIdUser();
+            if(u.getRole().equals(Roles.Admin)){
                 try {
                     Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
                     stageclose.close();
