@@ -60,7 +60,7 @@ public class ModifReservationController implements Initializable {
     ObservableList options = FXCollections.observableArrayList ();
      ReservationService rs =new ReservationService();
        
-     List<Reservation> res = rs.afficherres();
+     List<Reservation> res = rs.afficherres(LoginController.idglobal);
     @FXML
     private Button btnmodif;
     @FXML
@@ -153,8 +153,8 @@ public class ModifReservationController implements Initializable {
     private void modif(ActionEvent event) {
         ReservationService rs =new ReservationService();
         int value = Integer.parseInt((String) listIdR.getValue());
-        Reservation sa;
-     sa = new Reservation(value,Date.valueOf(dateR.getText()),Integer.parseInt(nbrp.getText()));
+        Reservation sa=rs.findById(value);
+     sa = new Reservation(value, Date.valueOf(dateR.getText()), LoginController.idglobal, sa.getId_salle(), Integer.parseInt(nbrp.getText()));
         rs.modifer(sa);
         list(res);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import services.UserServices;
+import utils.CryptWithMD5;
 
 /**
  * FXML Controller class
@@ -63,14 +64,16 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginButtonOnAction(ActionEvent event) {
+        System.out.println(CryptWithMD5.cryptWithMD5(enterPasswordField.getText()));
         if(us.checklogin(usernameTextFiled.getText(), enterPasswordField.getText())){
             User u=us.findByMail(usernameTextFiled.getText());
+            System.out.println(u);
             idglobal=u.getIdUser();
             if(u.getRole().equals(Roles.Admin)){
                 try {
                     Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
                     stageclose.close();
-                    Parent root=FXMLLoader.load(getClass().getResource("/GUI/FXMLGSTuser.fxml"));
+                    Parent root=FXMLLoader.load(getClass().getResource("/GUI/Dashboard.fxml"));
                     Stage stage =new Stage();
                     Scene scene = new Scene(root);
                     stage.setTitle("signup");
@@ -81,9 +84,23 @@ public class LoginController implements Initializable {
                 }
             }
             else{
-                System.out.println("interface client");
+                try {
+                    Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
+                    stageclose.close();
+                    Parent root=FXMLLoader.load(getClass().getResource("/GUI/DashboardClient.fxml"));
+                    Stage stage =new Stage();
+                    Scene scene = new Scene(root);
+                    stage.setTitle("signup");
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
+        }
+        else{
+            System.out.println("check login");
         }
     }
 

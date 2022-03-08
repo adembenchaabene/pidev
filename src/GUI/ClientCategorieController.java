@@ -6,6 +6,7 @@
 package GUI;
 
 import Entites.Categorie;
+import Entites.Panier;
 import Entites.Produit;
 import services.CategorieService;
 import services.ProduitService;
@@ -22,7 +23,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,7 +40,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import services.panierService;
 
 /**
  * FXML Controller class
@@ -49,7 +56,7 @@ public class ClientCategorieController implements Initializable {
      * Initializes the controller class.
      */
         @FXML
-    private ComboBox<?> list;
+    private ComboBox<Integer> list;
 
     @FXML
     private ScrollPane scroll;
@@ -67,7 +74,7 @@ public class ClientCategorieController implements Initializable {
     private Button btnpanier;
     ProduitService ps= new ProduitService();
    List<Produit> produits =ps.afficher();
-   
+    ObservableList<Integer> options=FXCollections.observableArrayList();
      
 
     @FXML
@@ -76,7 +83,7 @@ try {
             Connection cnx = DBConnection.getInstance().getCon();
             List<Categorie> categories = new ArrayList<>();
             Categorie c = new Categorie();
-            int value = Integer.parseInt((String) list.getValue());
+            int value = list.getValue();
             System.out.println(value);
             String req = "select * from categorie where idCateg = " +value ;
             Statement cs = cnx.createStatement();
@@ -101,10 +108,10 @@ try {
             PreparedStatement cs = cnx.prepareStatement(req);
             ResultSet rs = cs.executeQuery(req);
             while(rs.next()){
-           //     options.add(rs.getString("idCateg"));
+                options.add(rs.getInt("idCateg"));
                 
             }
-        //    list.setItems(options);
+            list.setItems(options);
         } catch (SQLException ex) {
             Logger.getLogger(SupprimerCategorieController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -166,6 +173,8 @@ Parent root = FXMLLoader .load(getClass().getResource("/GUI/PanierFXML.fxml"));
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        fillCombo();
+        list();
     } 
     @FXML
     void AfficherProduit(ActionEvent event) {
@@ -174,17 +183,39 @@ Parent root = FXMLLoader .load(getClass().getResource("/GUI/PanierFXML.fxml"));
     }
     public void rechaff(List<Produit> produits)
     {
+        panierService panierservice=new panierService();
+        Panier panier=new Panier();
      int column = 0;
         int row = 1;
         try {
             for (int i = 0; i < produits.size(); i++) {
+                panier.setProduit(produits.get(i));
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/GUI/AfficherProduitClient.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-
+                Button btn = new Button();
+                btn.setText("Ajouter au panier");
+                btn.setLayoutX(210.0);
+                btn.setLayoutY(155.0);
+                btn.setPrefHeight(28.0);
+                btn.setPrefWidth(175.0);
+                btn.setTextFill(Paint.valueOf("#f03535"));
+                Font f=new Font("System Bold", 18.0);
+                btn.setFont(f);
+                btn.setOnAction(new EventHandler<ActionEvent>() {
+                    
+                    @Override
+                    public void handle(ActionEvent event) {
+                        
+                        panierservice.ajouteer(panier);
+                    }
+                });
+                
+                
                 AfficherProduitClientController itemController= fxmlLoader.getController();
                 itemController.setData2(produits.get(i));
-
+                anchorPane.getChildren().add(btn);
+               
                 if (column == 1) {
                     column = 0;
                     row++;

@@ -44,8 +44,8 @@ public class ClientAdresseController implements Initializable {
     @FXML
     private Button valider;
     @FXML
-    private ComboBox<?> type;
-    ObservableList options2 = FXCollections.observableArrayList ();
+    private ComboBox<String> type;
+    ObservableList<String> options2 = FXCollections.observableArrayList ();
     @FXML
     private Button btnmod;
     @FXML
@@ -65,11 +65,11 @@ public class ClientAdresseController implements Initializable {
          if (Saisi() == true)
         { 
         ServiceAdresse sp = new ServiceAdresse();
-        Adresse p = new Adresse(ville.getText(),rue.getText(),Integer.parseInt(numm.getText()),2);
+        Adresse p = new Adresse(ville.getText(),rue.getText(),Integer.parseInt(numm.getText()),LoginController.idglobal);
         int getid = sp.ajout(p);
         System.out.println(getid);
          ServiceLivraison sp1 = new ServiceLivraison();
-        Livraison p1 = new Livraison((String) type.getValue(),getid,1,9,0,2);
+        Livraison p1 = new Livraison(type.getValue(),getid,3,1,0,LoginController.idglobal);
         sp1.ajout(p1);
          try {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

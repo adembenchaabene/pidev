@@ -89,7 +89,7 @@ public class LivraisonController implements Initializable {
 
     @FXML
     private void rederiger(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader .load(getClass().getResource("/GUI/client.fxml"));
+    Parent root = FXMLLoader .load(getClass().getResource("/GUI/DashboardClient.fxml"));
     Stage window = (Stage) retour.getScene().getWindow();
     window.setScene(new Scene(root));
     }

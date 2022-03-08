@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onMousePressed="#selectedarticle" prefHeight="252.0" prefWidth="735.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficheclientController">
+<AnchorPane id="AnchorPane" onMousePressed="#selectedarticle" prefHeight="169.0" prefWidth="384.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficheclientController">
    <children>
-      <Label fx:id="nameLabel" layoutX="198.0" layoutY="62.0" prefHeight="130.0" prefWidth="536.0" styleClass="shadow" stylesheets="@../Images/style.css" text="          Cherry" textAlignment="CENTER">
+      <Label fx:id="nameLabel" layoutX="238.0" layoutY="80.0" prefHeight="41.0" prefWidth="186.0" styleClass="shadow" stylesheets="@../Images/style.css" text="          Cherry" textAlignment="CENTER">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="priceLable" layoutX="288.0" layoutY="16.0" prefHeight="50.0" prefWidth="379.0" text="\\$0.99" textAlignment="CENTER">
+      <Label fx:id="priceLable" layoutX="288.0" layoutY="16.0" prefHeight="50.0" prefWidth="72.0" text="\\$0.99" textAlignment="CENTER">
          <font>
             <Font name="Cambria Bold" size="18.0" />
          </font>
@@ -23,14 +23,14 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="103.0" prefHeight="34.0" prefWidth="111.0" text="Contenu :">
+      <Label layoutX="62.0" layoutY="83.0" prefHeight="0.0" prefWidth="111.0" text="Contenu :">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Button layoutX="669.0" layoutY="210.0" mnemonicParsing="false" onAction="#listercommentaires" prefHeight="7.0" prefWidth="27.0" styleClass="transparent" stylesheets="@../Images/style.css" text="Lister les commentaires" />
-      <Label fx:id="getid" layoutX="612.0" layoutY="51.0" textFill="#5ea9c9" />
-      <ImageView fx:id="pic" fitHeight="118.0" fitWidth="243.0" layoutX="243.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="labelnblike" layoutX="454.0" layoutY="262.0" prefHeight="17.0" prefWidth="199.0" text="Label" />
+      <Button layoutX="310.0" layoutY="132.0" mnemonicParsing="false" onAction="#listercommentaires" prefHeight="25.0" prefWidth="144.0" styleClass="transparent" stylesheets="@../Images/style.css" text="Lister les commentaires" />
+      <Label fx:id="getid" layoutX="120.0" layoutY="150.0" prefHeight="17.0" prefWidth="66.0" textFill="#5ea9c9" />
+      <ImageView fx:id="pic" fitHeight="87.0" fitWidth="131.0" layoutX="121.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="labelnblike" layoutX="313.0" layoutY="179.0" prefHeight="17.0" prefWidth="95.0" text="Label" />
    </children>
 </AnchorPane>

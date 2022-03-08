@@ -117,7 +117,7 @@ public class ModifieradresseController implements Initializable {
      public void filladd(){
         try {
             cnx = DBConnection.getInstance().getCon();
-            String req = " select * from adresse where iduser = " + 2;
+            String req = " select * from adresse where iduser = " + LoginController.idglobal;
             PreparedStatement ps = cnx.prepareStatement(req);
             ResultSet rs = ps.executeQuery(req);
             while(rs.next()){
@@ -152,7 +152,7 @@ public class ModifieradresseController implements Initializable {
     private void modiieradd(ActionEvent event) {
         ServiceAdresse sp= new ServiceAdresse();
         int value = Integer.parseInt(selectid.getValue());
-        Adresse p = new Adresse(value,ville.getText(),rue.getText(),Integer.parseInt(numla.getText()));
+        Adresse p = new Adresse(value,ville.getText(),rue.getText(),Integer.parseInt(numla.getText()),LoginController.idglobal);
          Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
          alert1.setTitle("Confirmation Dialog");
          alert1.setContentText("Vous voulez modifier cette adresse");
@@ -175,7 +175,7 @@ public class ModifieradresseController implements Initializable {
 
     @FXML
     private void retourner(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader .load(getClass().getResource("/GUI/client.fxml"));
+    Parent root = FXMLLoader .load(getClass().getResource("/GUI/DashboardClient.fxml"));
     Stage window = (Stage) retour.getScene().getWindow();
     window.setScene(new Scene(root));
     }

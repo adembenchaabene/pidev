@@ -16,7 +16,7 @@
     <jar href="lib\jfoenix-8.0.10.jar" size="2710207" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.25.jar" size="2428320" download="eager" />
-    <jar href="tsti.jar" size="2191526" download="eager" />
+    <jar href="tsti.jar" size="2197111" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="tsti" >
     <param name="requiredFXVersion" value="8.0+"/>

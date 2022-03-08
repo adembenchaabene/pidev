@@ -255,10 +255,11 @@ public class ProduitFXMLController implements Initializable {
         int row1 = 1;
         try {
             for (int i = 0; i < produits.size(); i++) {
+                
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/GUI/AfficherFXML.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-
+                
                 AfficherFXMLController itemController= fxmlLoader.getController();
                 itemController.setData(produits.get(i));
 

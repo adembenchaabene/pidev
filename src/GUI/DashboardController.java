@@ -19,6 +19,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import animatefx.animation.FadeIn;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 /**
  * FXML Controller class
@@ -61,9 +64,21 @@ public class DashboardController implements Initializable {
         new FadeIn(context).play();
     }
     @FXML
-    private void btnLogOut() {
-         Stage stage = (Stage) context.getScene().getWindow();
-        stage.close();
+    private void btnLogOut(ActionEvent event) {
+        Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stageclose.close();
+            FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/GUI/Login.fxml"));
+            try {
+                loader.load();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            
+            stage.show();;
     }
 
     @FXML

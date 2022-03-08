@@ -34,7 +34,7 @@ public class ServiceAdresse {
          int risultato=-1;
         try {
             String req = "insert into adresse (ville,rue,numMaison,iduser) values"
-                    + " ( '" + l.getVille() + "', '" + l.getRue() + "', '" + l.getNumMaison()+"', '" +2+ "')" ;
+                    + " ( '" + l.getVille() + "', '" + l.getRue() + "', '" + l.getNumMaison()+"', '" +l.getIduser()+ "')" ;
             Statement st = cnx.createStatement();
             st.executeUpdate(req,Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = st.getGeneratedKeys();
@@ -54,12 +54,13 @@ public class ServiceAdresse {
     
     public void modifier(Adresse t) {
         try {
-            String req = "update adresse set ville = ? , rue = ? , numMaison = ?  where id_adresse = ?";
+            String req = "update adresse set ville = ? , rue = ? , numMaison = ? , iduser= ?  where id_adresse = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, t.getVille());
             ps.setString(2, t.getRue());
             ps.setInt(3, t.getNumMaison());
-            ps.setInt(4, t.getId_adresse());
+            ps.setInt(4, t.getIduser());
+            ps.setInt(5, t.getId_adresse());
             ps.executeUpdate();
             
         } catch (SQLException ex) {

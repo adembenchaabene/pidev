@@ -97,6 +97,35 @@ List<Produit> Produits = new ArrayList<>();
         }
         return null;
     }
+    public Produit findByid(int id){
+        Produit p=new Produit();
+        String query = "SELECT * FROM produit where idProduit="+id;
+
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+
+            while(result.next()) {
+                p=(new Produit(
+                        result.getInt("idProduit"),
+                        result.getString("nomProduit"),
+                        result.getInt("quantite"),
+                        result.getFloat("prix"),
+                        result.getInt("id_categ"),
+                        result.getString("description"),
+                        result.getString("image")
+                        
+                ));
+            }
+            return p;
+            
+           // Debugger.log("INFO: Successfully fetched all users.");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
     public List<Produit> rechercher(String name) {
         List<Produit> produits = afficher().stream()
                 .filter(x-> x.getNomProduit().contains(name))

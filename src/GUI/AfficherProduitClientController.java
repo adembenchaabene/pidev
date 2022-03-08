@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Entites.Panier;
 import Entites.Produit;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import services.panierService;
 
 /**
  * FXML Controller class
@@ -43,13 +45,8 @@ public class AfficherProduitClientController implements Initializable {
     @FXML
     private Label labelprix;
 
-    @FXML
-    private Button btnajouterproduitpanier;
     
-    @FXML
-    void AjouterProduitPanier(ActionEvent event) {
-
-    }
+    
     public void setData2(Produit p)
    {
        labelnom.setText(p.getNomProduit());
@@ -59,6 +56,7 @@ public class AfficherProduitClientController implements Initializable {
        labelprix.setText(String.valueOf(p.getPrix()));      
                
    }
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

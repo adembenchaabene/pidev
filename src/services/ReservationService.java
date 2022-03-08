@@ -29,7 +29,7 @@ public class ReservationService implements I_chariot<Reservation>{
  
     @Override
     public void ajouteer(Reservation C) {
-       String query = "INSERT INTO `Reservation`( `date`, `id_client`,`id_salle` , `nbrP`) VALUES ('"+ C.getDate()+"','"+1+"','"+1+"','"+C.getNbrP()+"')";
+       String query = "INSERT INTO `Reservation`( `date`, `id_client`,`id_salle` , `nbrP`) VALUES ('"+ C.getDate()+"','"+C.getId_client()+"','"+C.getId_salle()+"','"+C.getNbrP()+"')";
         try {
             Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
@@ -39,7 +39,7 @@ public class ReservationService implements I_chariot<Reservation>{
         }}
     @Override
     public void modifer(Reservation C) {
-         String query = "UPDATE Reservation set  `date`='"+C.getDate()+"' ,`id_salle`='"+1+"', `id_client`='"+1+"',`nbrP`='"+C.getNbrP()+"' where idReservation ='"+C.getIdReservation()+"'";
+         String query = "UPDATE Reservation set  `date`='"+C.getDate()+"' ,`id_salle`='"+C.getId_salle()+"', `id_client`='"+C.getId_client()+"',`nbrP`='"+C.getNbrP()+"' where idReservation ='"+C.getIdReservation()+"'";
         try {
             Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
@@ -142,9 +142,9 @@ public class ReservationService implements I_chariot<Reservation>{
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-   public  List<Reservation> afficherres() {
+   public  List<Reservation> afficherres(int id) {
         List<Reservation> reservations = new ArrayList<>();
-        String query = "SELECT idReservation,date,nbrP FROM Reservation where id_client="+1;
+        String query = "SELECT idReservation,date,nbrP FROM Reservation where id_client="+id;
 
         try {
             Statement stmt = con.createStatement();
@@ -169,7 +169,36 @@ public class ReservationService implements I_chariot<Reservation>{
             ex.printStackTrace();
         }
         return null; }
+   public Reservation findById(int id){
+       Reservation rs=new Reservation();
+       String query = "SELECT * FROM Reservation where idReservation="+id;
 
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+
+            if(result.next())
+            {
+                rs=(new Reservation(
+               
+                        result.getInt("idReservation"),
+                        result.getDate("date"),                     
+                        result.getInt("id_client"),
+                        result.getInt("id_salle"),
+                        result.getInt("nbrP")
+                                
+                ));       
+            }       
+            
+            //System.out.println("test");
+           System.out.println(rs);
+           // Debugger.log("INFO: Successfully fetched all users.");
+               
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return rs;
+   }
     @Override
     public List<Reservation> afficher() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

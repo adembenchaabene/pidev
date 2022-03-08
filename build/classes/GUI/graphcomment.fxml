@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane2" onMouseClicked="#selectedCmt" prefHeight="246.0" prefWidth="280.0" styleClass="free-delivery-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GraphcommentController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane2" onMouseClicked="#selectedCmt" prefHeight="208.0" prefWidth="257.0" styleClass="free-delivery-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GraphcommentController">
    <children>
       <Label layoutX="6.0" layoutY="93.0" text="commentaire :">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font></Label>
       <Label fx:id="contenuCommentaire" layoutX="111.0" layoutY="65.0" prefHeight="69.0" prefWidth="163.0" text="contenuCommentaire" textAlignment="CENTER" />
-      <Label layoutX="15.0" layoutY="191.0" prefHeight="14.0" prefWidth="35.0" text="Date :" textAlignment="CENTER">
+      <Label layoutX="15.0" layoutY="191.0" prefHeight="20.0" prefWidth="64.0" text="Date :" textAlignment="CENTER">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font></Label>

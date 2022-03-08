@@ -65,7 +65,7 @@ public class AfficheResController implements Initializable {
     private Label nbrp;
     ReservationService rs =new ReservationService();
        
-     List<Reservation> res = rs.afficherres();
+     List<Reservation> res = rs.afficherres(LoginController.idglobal);
     @FXML
     private Button retour;
     @FXML
@@ -158,7 +158,7 @@ public class AfficheResController implements Initializable {
     }
    @FXML
     void goback(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader .load(getClass().getResource("/GUI/Reservation.fxml"));
+    Parent root = FXMLLoader .load(getClass().getResource("/GUI/DashboardClient.fxml"));
     Stage window = (Stage) retour.getScene().getWindow();
     window.setScene(new Scene(root));
     }

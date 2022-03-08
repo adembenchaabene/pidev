@@ -138,7 +138,7 @@ Connection cnx;
  public void fillselect(){
       try {
             cnx = DBConnection.getInstance().getCon();
-            String req = " select * from adresse where iduser = " + 2;
+            String req = " select * from adresse where iduser = " + LoginController.idglobal;
             PreparedStatement ps = cnx.prepareStatement(req);
             ResultSet rs = ps.executeQuery(req);
             while(rs.next()){
@@ -153,7 +153,7 @@ Connection cnx;
 
     @FXML
     private void retourner(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader .load(getClass().getResource("/GUI/client.fxml"));
+    Parent root = FXMLLoader .load(getClass().getResource("/GUI/DashboardClient.fxml"));
     Stage window = (Stage) retour.getScene().getWindow();
     window.setScene(new Scene(root));
     }

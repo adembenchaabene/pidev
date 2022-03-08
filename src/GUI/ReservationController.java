@@ -124,7 +124,7 @@ public class ReservationController implements Initializable {
          
         ReservationService Res = new ReservationService();
       
-        Reservation rp = new Reservation (Date.valueOf(ldate.getValue()),1,1,Integer.parseInt(nbrP.getText()));
+        Reservation rp = new Reservation (Date.valueOf(ldate.getValue()),LoginController.idglobal,retriveIdfromNom(comboSalle.getValue()),Integer.parseInt(nbrP.getText()));
         //if(Integer.parseInt(nbrP.getText())>s.getCapacite())
         {
             Res.ajouteer(rp);
@@ -154,6 +154,22 @@ public class ReservationController implements Initializable {
         }
         
     }
+     public int retriveIdfromNom(String nom){
+         int resultat=0;
+         try {
+            cnx = DBConnection.getInstance().getCon();
+            String req = " select * from Salle where nom='"+nom+"'";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery(req);
+            while(rs.next()){
+                resultat=(rs.getInt("idSalle"));  
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return resultat;
+     }
      
       @FXML
       public void getNomSalle(ActionEvent event) {  

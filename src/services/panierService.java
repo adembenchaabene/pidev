@@ -26,8 +26,8 @@ public class panierService {
     }
     
     public void ajouteer(Panier p) {
-String query = "INSERT INTO `panier`(`idPanier`, `idProduit`,)"
-        + " VALUES ('"+p.getIdPanier()+"','"+p.getProduit().getIdProduit()+"')";
+String query = "INSERT INTO `panier`(`idProduit`)"
+        + " VALUES ('"+p.getProduit().getIdProduit()+"')";
         try {
             Statement stmt = cnx.createStatement();
             stmt.executeUpdate(query);
@@ -43,8 +43,8 @@ String query = "INSERT INTO `panier`(`idPanier`, `idProduit`,)"
     // modifier zeydaa
 
     
-    public void supprimer(Panier p) {
- String query = "DELETE from panier where idPanier ='"+p.getIdPanier()+"'";
+    public void supprimer(int id) {
+ String query = "DELETE from panier where idPanier ='"+id+"'";
         try {
             Statement stmt = cnx.createStatement();
             stmt.executeUpdate(query);
@@ -54,7 +54,7 @@ String query = "INSERT INTO `panier`(`idPanier`, `idProduit`,)"
         }
     }
 
-    
+    ProduitService ps=new ProduitService();
     public List<Panier> afficher() {
         List<Panier> paniers = new ArrayList<>();
         Panier p = new Panier();
@@ -66,7 +66,8 @@ String query = "INSERT INTO `panier`(`idPanier`, `idProduit`,)"
 
             while(result.next()) {
                 p.setIdPanier(result.getInt("idPanier"));
-                p.setIdPanier(result.getInt("idProduit"));
+                p.setProduit(ps.findByid(result.getInt("idProduit")));
+                
                 paniers.add(p);
                 System.out.println(paniers.toString());
                 

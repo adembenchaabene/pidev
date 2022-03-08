@@ -15,6 +15,9 @@ public class Panier {
 
     public Panier() {
     }
+    public Panier(Produit produit) {
+        this.produit = produit;
+    }
 
     public Panier(int idPanier, Produit produit) {
         this.idPanier = idPanier;
