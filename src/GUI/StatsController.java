@@ -77,7 +77,7 @@ public class StatsController implements Initializable {
 
     @FXML
     private void retourstat(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader .load(getClass().getResource("/GUI/ArticFXML.fxml"));
+    Parent root = FXMLLoader .load(getClass().getResource("/GUI/Dashboard.fxml"));
     Stage window = (Stage) statik.getScene().getWindow();
     window.setScene(new Scene(root));
     window.setTitle("I_chariot");

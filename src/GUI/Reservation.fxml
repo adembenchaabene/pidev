@@ -14,11 +14,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReservationController">
+<AnchorPane id="AnchorPane" prefHeight="672.0" prefWidth="1144.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReservationController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#22427c" height="397.0" layoutX="-3.0" layoutY="59.0" stroke="#22427c" strokeType="INSIDE" width="189.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#22427c" height="73.0" layoutY="-1.0" stroke="#22427c" strokeType="INSIDE" style="visibility: #22427c;" width="600.0" />
-      <ScrollPane fx:id="scroll" layoutX="202.0" layoutY="99.0" prefHeight="357.0" prefWidth="383.0" styleClass="transparent" stylesheets="@../Images/style.css">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#22427c" height="602.0" layoutX="-3.0" layoutY="71.0" stroke="#22427c" strokeType="INSIDE" width="305.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#22427c" height="73.0" layoutY="-1.0" stroke="#22427c" strokeType="INSIDE" style="visibility: #22427c;" width="1144.0" />
+      <ScrollPane fx:id="scroll" layoutX="335.0" layoutY="84.0" prefHeight="577.0" prefWidth="786.0" styleClass="transparent" stylesheets="@../Images/style.css">
          <content>
             <GridPane fx:id="grid" prefHeight="9.0" prefWidth="17.0">
                <rowConstraints>
@@ -27,17 +27,17 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Button fx:id="Res" layoutX="16.0" layoutY="342.0" mnemonicParsing="false" onAction="#AddRes" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #3464bc;" text="Reserver une salle" textFill="WHITE" />
-      <DatePicker fx:id="ldate" layoutX="14.0" layoutY="300.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="nbrP" layoutX="14.0" layoutY="214.0" />
-      <ComboBox fx:id="comboSalle" layoutX="97.0" layoutY="111.0" onAction="#getNomSalle" prefHeight="25.0" prefWidth="56.0" />
-      <Button fx:id="afficheR" layoutX="18.0" layoutY="394.0" mnemonicParsing="false" onAction="#rediriger" style="-fx-background-color: #3464bc;" text="Afficher mes reservations" textFill="WHITE" />
+      <Button fx:id="Res" layoutX="61.0" layoutY="403.0" mnemonicParsing="false" onAction="#AddRes" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #3464bc;" text="Reserver une salle" textFill="WHITE" />
+      <DatePicker fx:id="ldate" layoutX="16.0" layoutY="324.0" prefHeight="34.0" prefWidth="257.0" />
+      <TextField fx:id="nbrP" layoutX="14.0" layoutY="214.0" prefHeight="34.0" prefWidth="257.0" />
+      <ComboBox fx:id="comboSalle" layoutX="122.0" layoutY="111.0" onAction="#getNomSalle" prefHeight="34.0" prefWidth="72.0" />
+      <Button fx:id="afficheR" layoutX="61.0" layoutY="454.0" mnemonicParsing="false" onAction="#rediriger" style="-fx-background-color: #3464bc;" text="Afficher mes reservations" textFill="WHITE" />
       <Label layoutX="18.0" layoutY="115.0" text="Choisir Salle:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <ImageView fitHeight="65.0" fitWidth="72.0" layoutX="241.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="65.0" fitWidth="72.0" layoutX="106.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/logo.jpg" />
          </image>
@@ -47,7 +47,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="18.0" layoutY="272.0" text="Date souhaitée:" textFill="WHITE">
+      <Label layoutX="18.0" layoutY="294.0" text="Date souhaitée:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -62,12 +62,12 @@
             <Image url="@../Images/menu.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="66.0" layoutX="545.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="34.0" fitWidth="66.0" layoutX="1080.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/home.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="28.0" layoutX="16.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="34.0" fitWidth="28.0" layoutX="14.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/calendar_week41_48px.png" />
          </image>

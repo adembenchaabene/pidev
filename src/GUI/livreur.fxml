@@ -50,12 +50,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LivreurController">
+<VBox prefHeight="672.0" prefWidth="1144.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LivreurController">
   <children>
     <MenuBar VBox.vgrow="NEVER" />
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="503.0" prefWidth="927.0" stylesheets="@../Images/style.css" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="586.0" prefWidth="1005.0" stylesheets="@../Images/style.css" VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="76.0" layoutY="461.0" mnemonicParsing="false" onAction="#ajouterl" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #22427c;" styleClass="add-btn" stylesheets="@../Images/style.css" textFill="#f2eeee" />
+            <Button layoutX="77.0" layoutY="590.0" mnemonicParsing="false" onAction="#ajouterl" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #22427c;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Ajouter" textFill="#f2eeee" />
             <Label layoutX="14.0" layoutY="246.0" text="Nom:">
                <font>
                   <Font name="Broadway" size="14.0" />
@@ -69,18 +69,27 @@
                   <Font name="Broadway" size="14.0" />
                </font></Label>
             <Separator layoutX="2.0" layoutY="76.0" prefHeight="9.0" prefWidth="634.0" />
-            <Separator layoutX="413.0" layoutY="86.0" orientation="VERTICAL" prefHeight="421.0" prefWidth="10.0" />
-            <Pane layoutY="-1.0" prefHeight="104.0" prefWidth="938.0" style="-fx-background-color: #22427c;">
+            <Separator layoutX="413.0" layoutY="86.0" orientation="VERTICAL" prefHeight="586.0" prefWidth="3.0" />
+            <Pane layoutY="-1.0" prefHeight="104.0" prefWidth="1144.0" style="-fx-background-color: #22427c;">
                <children>
-                  <ImageView fitHeight="64.0" fitWidth="121.0" layoutX="426.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="64.0" fitWidth="121.0" layoutX="563.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/272743972_360627165535347_4855675740390419176_n.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="supprime" layoutX="24.0" layoutY="20.0" mnemonicParsing="false" onAction="#rederigersupp" prefHeight="30.0" prefWidth="89.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" />
-                  <Button fx:id="modifier" layoutX="24.0" layoutY="60.0" mnemonicParsing="false" onAction="#rederigermod" prefHeight="30.0" prefWidth="89.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" />
-                  <Button fx:id="affecterl" layoutX="773.0" layoutY="20.0" mnemonicParsing="false" onAction="#redirigeraff" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Affecter livreur" textFill="WHITE" />
-                  <Button fx:id="stat" layoutX="773.0" layoutY="62.0" mnemonicParsing="false" onAction="#consulterstat" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" />
+                  <Button fx:id="supprime" layoutX="24.0" layoutY="20.0" mnemonicParsing="false" onAction="#rederigersupp" prefHeight="30.0" prefWidth="89.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="supprimer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="modifier" layoutX="24.0" layoutY="60.0" mnemonicParsing="false" onAction="#rederigermod" prefHeight="30.0" prefWidth="89.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Modifier" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="affecterl" layoutX="960.0" layoutY="14.0" mnemonicParsing="false" onAction="#redirigeraff" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Affecter livreur" textFill="WHITE" />
+                  <Button fx:id="stat" layoutX="960.0" layoutY="56.0" mnemonicParsing="false" onAction="#consulterstat" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #3464bc;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Stats" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Button>
                   <ImageView fitHeight="18.0" fitWidth="17.0" layoutX="60.0" layoutY="26.0">
                      <image>
                         <Image url="@../Images/waste.png" />
@@ -98,10 +107,10 @@
                   </ImageView>
                </children></Pane>
             <Label fx:id="affiche" layoutX="319.0" layoutY="103.0" prefHeight="10.0" prefWidth="33.0" />
-            <Button layoutX="561.0" layoutY="461.0" mnemonicParsing="false" onAction="#afficherl" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #22427c;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Afficher" textFill="#fffbfb" />
-            <HBox alignment="CENTER" layoutX="418.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="505.0">
+            <Button layoutX="678.0" layoutY="590.0" mnemonicParsing="false" onAction="#afficherl" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #22427c;" styleClass="add-btn" stylesheets="@../Images/style.css" text="Afficher" textFill="#fffbfb" />
+            <HBox alignment="CENTER" layoutX="418.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="709.0">
                <children>
-                  <ScrollPane fx:id="scroll" prefHeight="322.0" prefWidth="475.0" styleClass="transparent" stylesheets="@../../../../../Desktop/Fruits-Market-master/FruitMarket/src/values/style.css">
+                  <ScrollPane fx:id="scroll" prefHeight="423.0" prefWidth="729.0" styleClass="transparent" stylesheets="@../../../../../Desktop/Fruits-Market-master/FruitMarket/src/values/style.css">
                      <content>
                         <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                            <rowConstraints>

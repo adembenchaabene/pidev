@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Entites.Categorie;
 import Entites.Livreur;
 import java.io.IOException;
 import javax.mail.Authenticator;
@@ -31,6 +32,7 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
@@ -81,10 +83,10 @@ public class LivreurController implements Initializable {
     private Button btnchercher;
     @FXML
     private TextField search;
-    @FXML
-    private ComboBox<String> typeRecherchee;
     ObservableList<String> listeTypeRecherchee = FXCollections.observableArrayList("Tout", "nom", "prenom", "numtel", "email");
 
+    ServiceLivreur sp= new ServiceLivreur();
+         List<Livreur> livreurs = sp.afficher();
     /**
      * Initializes the controller class.
      */
@@ -212,8 +214,7 @@ public static void Alert(Alert.AlertType type, String title, String header, Stri
     @FXML
     private void afficherl(ActionEvent event) {
            grid.getChildren().clear();
-            ServiceLivreur sp= new ServiceLivreur();
-         List<Livreur> livreurs = sp.afficher();
+            
          
         int column = 0;
         int row = 1;
@@ -325,6 +326,109 @@ public static void Alert(Alert.AlertType type, String title, String header, Stri
         }
         
     }
+    public void recherche_avance(){
+        ObservableList<Livreur> list=FXCollections.observableArrayList(livreurs);
+        FilteredList<Livreur> filtereddata=new FilteredList<>(list,b->true);
+        int column1 = 0;
+        int row1 = 1;
+        try {
+            for (int i = 0; i < livreurs.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/GUI/affichi.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                AffichiController itemController = fxmlLoader.getController();
+                itemController.setData(livreurs.get(i));
+
+                if (column1 == 1) {
+                    column1 = 0;
+                    row1++;
+                }
+
+                grid.add(anchorPane, column1++, row1); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        
+        search.textProperty().addListener((observable,oldvalue,newValue) -> {
+            filtereddata.setPredicate(livreur->{
+                if(newValue==null||newValue.isEmpty()){
+                    return true;
+                }
+                String lowercasefilter=newValue.toLowerCase();
+                if(livreur.getEmail().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                else if(livreur.getNom().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                else if(livreur.getPrenom().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                else if(String.valueOf(livreur.getNumtel()).toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                
+                
+                
+                else{
+                    return false;
+                }
+                
+            });
+            grid.getChildren().clear();
+          
+          //affiche.setText(bb.afficher().toString());
+         
+        try {
+            int column = 0;
+        int row = 1;
+            for (int i = 0; i < filtereddata.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/GUI/affichi.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                AffichiController itemController = fxmlLoader.getController();
+                itemController.setData(livreurs.get(i));
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        });
+    
+    }
    
 
-           }
+}

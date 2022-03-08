@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Entites.Article;
 import Entites.Salle;
 import java.sql.SQLException;
 import services.SalleService;
@@ -18,6 +19,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import static javafx.application.ConditionalFeature.FXML;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -32,6 +36,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +45,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import static jdk.nashorn.internal.objects.NativeRegExp.test;
 import org.controlsfx.control.Notifications;
+import services.ArticleService;
 
 /**
  * FXML Controller class
@@ -59,15 +65,9 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField lprix;
     @FXML
-    private Label listS;
-    @FXML
-    private Label affiche;
-    @FXML
     private Button modifierS;
     @FXML
     private Button supprimerS;
-    @FXML
-    private ComboBox<String> listId;
     @FXML
     private GridPane grid;
     @FXML
@@ -80,11 +80,14 @@ public class FXMLController implements Initializable {
      SalleService sp= new SalleService();
        
      List<Salle> salles = sp.afficher();
+    @FXML
+    private ScrollPane scroll;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        recherche_avance();
     }    
     public static void popAlert(Alert.AlertType type, String title, String header, String text) {
         Alert alert = new Alert(type);
@@ -223,6 +226,113 @@ public class FXMLController implements Initializable {
     Stage window = (Stage) statS.getScene().getWindow();
     window.setScene(new Scene(root));
     window.setTitle("Statistique salle");
+    }
+    public void recherche_avance(){
+        
+        
+        ObservableList<Salle> list=FXCollections.observableArrayList(salles);
+        FilteredList<Salle> filtereddata=new FilteredList<>(list,b->true);
+        int column1 = 0;
+        int row1 = 1;
+        try {
+            for (int i = 0; i < salles.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/GUI/AfficheSalle.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                AfficheSalleController itemController= fxmlLoader.getController();
+                itemController.setData(salles.get(i));
+
+                if (column1 == 1) {
+                    column1 = 0;
+                    row1++;
+                }
+
+                grid.add(anchorPane, column1++, row1); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        
+        textR.textProperty().addListener((observable,oldvalue,newValue) -> {
+            filtereddata.setPredicate(salle->{
+                if(newValue==null||newValue.isEmpty()){
+                    return true;
+                }
+                String lowercasefilter=newValue.toLowerCase();
+                if(salle.getNom().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                else if(String.valueOf(salle.getPrix()).toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                
+                
+                
+                
+                else if(String.valueOf(salle.getCapacite()).toString().toLowerCase().indexOf(lowercasefilter)!=-1){
+                    return true;
+                }
+                
+                else{
+                    return false;
+                }
+                
+            });
+            grid.getChildren().clear();
+          
+          //affiche.setText(bb.afficher().toString());
+         
+        try {
+            int column = 0;
+        int row = 1;
+            for (int i = 0; i < filtereddata.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/GUI/AfficheSalle.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                AfficheSalleController itemController= fxmlLoader.getController();
+                itemController.setData(filtereddata.get(i));
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        });
+        
+        
+        
+        
     }
     
     

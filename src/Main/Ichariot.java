@@ -25,7 +25,7 @@ public class Ichariot extends Application {
     @Override    
      public void start(Stage primaryStage) throws Exception{
         Parent root  = FXMLLoader.load(getClass().getResource(
-              "/GUI/FXML.fxml"));
+              "/GUI/Dashboard.fxml"));
           //Parent root  = FXMLLoader.load(getClass().getResource(
                   //  "/GUI/Reservation.fxml"));
                

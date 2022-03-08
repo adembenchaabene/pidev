@@ -118,7 +118,7 @@ public class ModifierCategorieController implements Initializable {
 
     @FXML
     void retourner(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader .load(getClass().getResource("/GUI/CategorieFXML.fxml"));
+    Parent root = FXMLLoader .load(getClass().getResource("/GUI/Dashboard.fxml"));
     Stage window = (Stage) retour.getScene().getWindow();
     window.setScene(new Scene(root));
     }

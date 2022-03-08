@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.io.IOException;
 import utils.DBConnection;
 import java.net.URL;
 import java.sql.Connection;
@@ -16,10 +17,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -62,5 +69,24 @@ public class StatistiqueSalleController implements Initializable {
         idStatSalle.setLegendSide(Side.LEFT);
         idStatSalle.setData(data);
     
+    }
+
+    @FXML
+    private void btnretour(ActionEvent event) {
+        try {
+            Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
+            
+            stageclose.close();
+            Parent root=FXMLLoader.load(getClass().getResource("/GUI/Dashboard.fxml"));
+            Stage stage =new Stage();
+            
+            Scene scene = new Scene(root);
+            
+            stage.setTitle("signup");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLforgotpasswordController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

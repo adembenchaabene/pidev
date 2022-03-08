@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" onMousePressed="#click" prefHeight="280.0" prefWidth="691.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ArticaffichiController">
+<AnchorPane fx:id="anchorPane" onMousePressed="#click" prefHeight="77.0" prefWidth="430.0" styleClass="chosen-fruit-card" stylesheets="@../Images/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ArticaffichiController">
    <children>
-      <Label fx:id="nameLabel" layoutX="133.0" layoutY="72.0" prefHeight="122.0" prefWidth="552.0" stylesheets="@../Images/style.css" text="                                        Cherry" textAlignment="CENTER">
+      <Label fx:id="nameLabel" layoutX="221.0" layoutY="72.0" prefHeight="30.0" prefWidth="262.0" stylesheets="@../Images/style.css" text="                                        Cherry" textAlignment="CENTER">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
@@ -22,11 +22,11 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="11.0" layoutY="115.0" prefHeight="34.0" prefWidth="114.0" text="Contenu :">
+      <Label layoutX="17.0" layoutY="72.0" prefHeight="34.0" prefWidth="114.0" text="Contenu :">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <ImageView fx:id="pic" fitHeight="122.0" fitWidth="249.0" layoutX="233.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pic" fitHeight="122.0" fitWidth="249.0" layoutX="191.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
