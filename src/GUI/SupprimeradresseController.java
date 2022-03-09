@@ -101,7 +101,7 @@ Connection cnx;
     public void listsupp(){
       grid.getChildren().clear();
             ServiceAdresse sp= new ServiceAdresse();
-         List<Adresse> adresses = sp.afficheradd();  
+         List<Adresse> adresses = sp.afficheradd(LoginController.idglobal);  
         int column = 0;
         int row = 1;
         try {

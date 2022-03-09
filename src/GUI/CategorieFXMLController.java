@@ -237,7 +237,7 @@ public class CategorieFXMLController implements Initializable {
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 AfficherFXML1Controller itemController= fxmlLoader.getController();
-                itemController.setData1(categories.get(i));
+                itemController.setData1(filtereddata.get(i));
 
                 if (column == 1) {
                     column = 0;

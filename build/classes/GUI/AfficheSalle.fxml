@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -22,9 +23,9 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label fx:id="idNom" layoutX="90.0" layoutY="109.0" prefHeight="17.0" prefWidth="165.0" />
+      <Label fx:id="idNom" layoutX="99.0" layoutY="112.0" prefHeight="17.0" prefWidth="165.0" />
       <Label fx:id="idCap" layoutX="90.0" layoutY="153.0" prefHeight="17.0" prefWidth="49.0" />
       <Label fx:id="idPrix" layoutX="246.0" layoutY="154.0" prefHeight="17.0" prefWidth="36.0" />
-      <Label fx:id="idImg" layoutX="76.0" layoutY="20.0" prefHeight="47.0" prefWidth="78.0" />
+      <ImageView fx:id="img" fitHeight="93.0" fitWidth="190.0" layoutX="136.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

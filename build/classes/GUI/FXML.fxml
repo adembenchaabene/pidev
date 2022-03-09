@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="672.0" prefWidth="1144.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="672.0" prefWidth="1144.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#22427c" height="97.0" layoutX="-12.0" layoutY="-23.0" stroke="BLACK" strokeType="INSIDE" width="1155.0" />
       <Label layoutX="11.0" layoutY="328.0" text="Nom Salle:">
@@ -30,8 +30,8 @@
             <Font name="System Bold" size="12.0" />
          </font></Label>
       <TextField fx:id="lcapacite" layoutX="88.0" layoutY="380.0" prefHeight="25.0" prefWidth="157.0" />
-      <TextField fx:id="limage" layoutX="88.0" layoutY="186.0" prefHeight="97.0" prefWidth="160.0" />
-      <Label layoutX="22.0" layoutY="213.0" text="Image:">
+      <TextField fx:id="limage" layoutX="87.0" layoutY="247.0" prefHeight="25.0" prefWidth="160.0" />
+      <Label layoutX="22.0" layoutY="251.0" text="Image:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
@@ -92,5 +92,6 @@
             <Image url="@../Images/home.png" />
          </image>
       </ImageView>
+      <Button layoutX="96.0" layoutY="152.0" mnemonicParsing="false" onAction="#addimg" text="upload" />
    </children>
 </AnchorPane>

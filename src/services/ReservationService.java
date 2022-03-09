@@ -144,7 +144,7 @@ public class ReservationService implements I_chariot<Reservation>{
     }
    public  List<Reservation> afficherres(int id) {
         List<Reservation> reservations = new ArrayList<>();
-        String query = "SELECT idReservation,date,nbrP FROM Reservation where id_client="+id;
+        String query = "SELECT * FROM Reservation where id_client="+id;
 
         try {
             Statement stmt = con.createStatement();
@@ -155,8 +155,11 @@ public class ReservationService implements I_chariot<Reservation>{
                 reservations.add(new Reservation(
                
                         result.getInt("idReservation"),
-                        result.getDate("date"),                     
+                        result.getDate("date"),
+                        result.getInt("id_client"),
+                        result.getInt("id_salle"),
                         result.getInt("nbrP")
+                        
                                 
                 ));       
             }       

@@ -92,7 +92,7 @@ public class ArticFXMLController implements Initializable {
     void addArticle(ActionEvent event) {
         ArticleService bb = new ArticleService();
         //Personne p = new Personne(lnom.getText(),lprenom.getText());
-        Article ah =new Article(tfcontenu.getText(),11111111,tftitre.getText(),Etat.desarchive,tfimage.getText(),0);
+        Article ah =new Article(tfcontenu.getText(),LoginController.idglobal,tftitre.getText(),Etat.desarchive,tfimage.getText(),0);
         if(("".equals(tfcontenu.getText()))||("".equals(tftitre.getText()))||("".equals(tfimage.getText())))
         {
         Alert alert1 = new Alert(Alert.AlertType.WARNING);

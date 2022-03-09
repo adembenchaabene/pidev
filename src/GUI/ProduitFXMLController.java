@@ -9,6 +9,7 @@ import Entites.Produit;
 import Entites.Salle;
 import services.ProduitService;
 import doryan.windowsnotificationapi.fr.Notification;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -35,6 +36,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
@@ -84,7 +86,9 @@ public class ProduitFXMLController implements Initializable {
 
        
    ProduitService ps= new ProduitService();
-   List<Produit> produits =ps.afficher();
+    @FXML
+    private AnchorPane anchorePane;
+   
    
 
 
@@ -94,6 +98,7 @@ public class ProduitFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        recherche_avance();
     }    
 
      @FXML
@@ -118,7 +123,7 @@ public class ProduitFXMLController implements Initializable {
                         System.out.println("clicked ON ");
                     }
                 });
-       
+       rechaff();
         notificationBuilder.show();
         try {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -197,7 +202,7 @@ public class ProduitFXMLController implements Initializable {
     private void rechProduit(ActionEvent event) throws IOException {
       List<Produit> produits= ps.rechercher(textR.getText());
       grid.getChildren().clear();
-      rechaff(produits);
+      rechaff();
         
     } 
   @FXML
@@ -210,10 +215,11 @@ public class ProduitFXMLController implements Initializable {
    @FXML
     void AfficherProduit(ActionEvent event) {
     grid.getChildren().clear();
-    rechaff(produits);
+    rechaff();
     }
-    public void rechaff(List<Produit> produits)
+    public void rechaff()
     {
+        List<Produit> produits=ps.afficher();
      int column = 0;
         int row = 1;
         try {
@@ -249,19 +255,19 @@ public class ProduitFXMLController implements Initializable {
         
     }
     public void recherche_avance(){
-        ObservableList<Produit> list=FXCollections.observableArrayList(produits);
+        ObservableList<Produit> list=FXCollections.observableArrayList(ps.afficher());
         FilteredList<Produit> filtereddata=new FilteredList<>(list,b->true);
         int column1 = 0;
         int row1 = 1;
         try {
-            for (int i = 0; i < produits.size(); i++) {
+            for (int i = 0; i < ps.afficher().size(); i++) {
                 
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/GUI/AfficherFXML.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 
                 AfficherFXMLController itemController= fxmlLoader.getController();
-                itemController.setData(produits.get(i));
+                itemController.setData(ps.afficher().get(i));
 
                 if (column1 == 1) {
                     column1 = 0;
@@ -327,7 +333,7 @@ public class ProduitFXMLController implements Initializable {
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 AfficherFXMLController itemController= fxmlLoader.getController();
-                itemController.setData(produits.get(i));
+                itemController.setData(filtereddata.get(i));
 
                 if (column == 1) {
                     column = 0;
@@ -352,6 +358,17 @@ public class ProduitFXMLController implements Initializable {
         }
         
         });
+    }
+
+    @FXML
+    private void addimage(ActionEvent event) {
+         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+Stage stage = (Stage)anchorePane.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+ if(file != null){
+            Iimage.setText(file.getName());
+        }
     }
     
 }

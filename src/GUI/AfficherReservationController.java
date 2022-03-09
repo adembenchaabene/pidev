@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import services.SalleService;
 
 /**
  * FXML Controller class
@@ -41,16 +42,20 @@ public class AfficherReservationController{
     private Label idRes;
     @FXML
     private AnchorPane anchorPane2;
+    @FXML
+    private Label labelnomsalle;
     /**
      * Initializes the controller class.
      */
-
+SalleService ss=new SalleService();
     public void setData1(Reservation r)
     {
  
         idRes.setText(String.valueOf(r.getIdReservation()));
         nbrp.setText(String.valueOf(r.getNbrP()));
         iddate.setText(r.getDate().toString());
+        labelnomsalle.setText(ss.findById(r.getId_salle()).getNom());
+        
     }
     
 }

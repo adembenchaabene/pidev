@@ -6,12 +6,12 @@
 package GUI;
 
 import Entites.Salle;
-import java.awt.Image;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -31,7 +31,6 @@ public class AfficheSalleController  {
     @FXML
     private Label idCap;
 
-    @FXML
     private Label idImg;
 
     @FXML
@@ -39,6 +38,8 @@ public class AfficheSalleController  {
 
     @FXML
     private Label idPrix;
+    @FXML
+    private ImageView img;
     
     /**
      * Initializes the controller class.
@@ -50,10 +51,10 @@ public class AfficheSalleController  {
         idPrix.setText(String.valueOf(s.getPrix()));  
         idNom.setText(s.getNom());
         idCap.setText(String.valueOf(s.getCapacite()));  
-        idImg.setText(s.getImage()); 
-        /*File f = new File("C:/Users/mariem/Documents/NetBeansProjects/IchariotCopie/src/imgs" + Salle.);
-         Image img = new Image(f.toURI().toString());
-         idImg.setImage(img);*/
+        
+        File f = new File("C:/Users/mariem/Documents/NetBeansProjects/IchariotCopie/src/imgs/" + s.getImage());
+         Image img1 = new Image(f.toURI().toString());
+         img.setImage(img1);
     }
     
 }

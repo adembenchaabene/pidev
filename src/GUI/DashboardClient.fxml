@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="147.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/logo.jpg" />
+                  <Image url="@../Images/logo.png" />
                </image>
             </ImageView>
             <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#DashBoardOnAction" opacity="0.85" prefHeight="55.0" prefWidth="255.0" style="-fx-background-color: #121212; -fx-background-radius: 40px;" text="DASHBOARD  " textFill="WHITE">
@@ -25,21 +25,6 @@
                   <ImageView fitHeight="41.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/dashboard.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#gotoadresse" opacity="0.85" prefHeight="55.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Adresse" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/customer.png" />
                      </image>
                   </ImageView>
                </graphic>

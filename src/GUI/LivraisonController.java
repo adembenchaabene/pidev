@@ -52,7 +52,7 @@ public class LivraisonController implements Initializable {
     public void listsupp(){
        grid.getChildren().clear();
             ServiceLivraison sp= new ServiceLivraison();
-         List<Livraison> livraisons = sp.afficher();  
+         List<Livraison> livraisons = sp.afficherliv(LoginController.idglobal);  
         int column = 0;
         int row = 1;
         try {

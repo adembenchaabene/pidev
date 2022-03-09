@@ -79,7 +79,7 @@ public class ModifieradresseController implements Initializable {
     public void listadd(){
       grid.getChildren().clear();
             ServiceAdresse sp= new ServiceAdresse();
-         List<Adresse> adresses = sp.afficheradd();  
+         List<Adresse> adresses = sp.afficheradd(LoginController.idglobal);  
         int column = 0;
         int row = 1;
         try {
@@ -115,6 +115,7 @@ public class ModifieradresseController implements Initializable {
     
     }
      public void filladd(){
+         choix.clear();
         try {
             cnx = DBConnection.getInstance().getCon();
             String req = " select * from adresse where iduser = " + LoginController.idglobal;

@@ -47,11 +47,13 @@ String query = "INSERT INTO `produit`(`nomProduit`, `quantite`, `prix`, `id_cate
     @Override
     public void modifer(Produit C) {
 String query = "UPDATE produit set  `nomProduit`='"+C.getNomProduit()+"', `quantite`='"+C.getQuantite()+"', `prix`='"+C.getPrix()+"', `id_categ`='"+C.getId_categorie()+"', `description`='"+C.getDescription()+"', `image`='"+C.getImage()+"' where idProduit='"+C.getIdProduit()+"'";
+       
        try {
             Statement stmt = con.createStatement();
             stmt.executeUpdate(query);
             System.out.println("INFO: produit Updated.");
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

@@ -10,6 +10,7 @@ import Entites.Salle;
 import java.sql.SQLException;
 import services.SalleService;
 import java.awt.Image;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,6 +43,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import static jdk.nashorn.internal.objects.NativeRegExp.test;
 import org.controlsfx.control.Notifications;
@@ -79,9 +81,11 @@ public class FXMLController implements Initializable {
     private TextField textR;
      SalleService sp= new SalleService();
        
-     List<Salle> salles = sp.afficher();
+     
     @FXML
     private ScrollPane scroll;
+    @FXML
+    private AnchorPane anchorPane;
     
     
     @Override
@@ -144,6 +148,7 @@ public class FXMLController implements Initializable {
                         System.out.println("clicked ON ");
                     }
                 });
+        rechaff();
        
         notificationBuilder.show();
         } 
@@ -153,17 +158,18 @@ public class FXMLController implements Initializable {
     private void rechSalle(ActionEvent event) throws IOException {
       List<Salle> salles= sp.rechercher(textR.getText());
       grid.getChildren().clear();
-      rechaff(salles);
+      rechaff();
     } 
     
     @FXML
     void AfficherSalle(ActionEvent event) {
     grid.getChildren().clear();
-    rechaff(salles);
+    rechaff();
     }
     
-    public void rechaff(List<Salle> salles)
+    public void rechaff()
     {
+        List<Salle> salles = sp.afficher();
      int column = 0;
         int row = 1;
         try {
@@ -206,6 +212,7 @@ public class FXMLController implements Initializable {
     Stage window = (Stage) supprimerS.getScene().getWindow();
     window.setScene(new Scene(root));
     window.setTitle("supprimer salle"); 
+    
      
         } 
         
@@ -230,18 +237,18 @@ public class FXMLController implements Initializable {
     public void recherche_avance(){
         
         
-        ObservableList<Salle> list=FXCollections.observableArrayList(salles);
+        ObservableList<Salle> list=FXCollections.observableArrayList(sp.afficher());
         FilteredList<Salle> filtereddata=new FilteredList<>(list,b->true);
         int column1 = 0;
         int row1 = 1;
         try {
-            for (int i = 0; i < salles.size(); i++) {
+            for (int i = 0; i < sp.afficher().size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/GUI/AfficheSalle.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 AfficheSalleController itemController= fxmlLoader.getController();
-                itemController.setData(salles.get(i));
+                itemController.setData(sp.afficher().get(i));
 
                 if (column1 == 1) {
                     column1 = 0;
@@ -333,6 +340,17 @@ public class FXMLController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void addimg(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+Stage stage = (Stage)anchorPane.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+ if(file != null){
+            limage.setText(file.getName());
+        }
     }
     
     

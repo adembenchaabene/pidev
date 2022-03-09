@@ -58,6 +58,7 @@ public class ClientAdresseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        affichertype();
+        System.out.println(PanierFXMLController.id_panier_produit);
     }    
 
     @FXML
@@ -69,7 +70,7 @@ public class ClientAdresseController implements Initializable {
         int getid = sp.ajout(p);
         System.out.println(getid);
          ServiceLivraison sp1 = new ServiceLivraison();
-        Livraison p1 = new Livraison(type.getValue(),getid,3,1,0,LoginController.idglobal);
+        Livraison p1 = new Livraison(type.getValue(), getid, PanierFXMLController.id_panier_produit ,0,0,LoginController.idglobal);
         sp1.ajout(p1);
          try {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

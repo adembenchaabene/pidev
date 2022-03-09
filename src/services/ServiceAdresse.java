@@ -104,10 +104,10 @@ public class ServiceAdresse {
         return list;
     }
     
-     public List<Adresse> afficheradd() {
+     public List<Adresse> afficheradd(int id) {
         List<Adresse> list = new ArrayList<>();
         try {
-            String req = " select * from adresse where iduser = " + 2;
+            String req = " select * from adresse where iduser = " + id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             

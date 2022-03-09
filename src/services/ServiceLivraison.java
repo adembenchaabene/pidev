@@ -33,8 +33,8 @@ public class ServiceLivraison {
 
     public void ajout(Livraison l) {
         try {
-            String req = "insert into livraison (type,adresse,id_produit,id_livreur,etat,iduser) values"
-                    + " ( '" + l.getType() + "', '" + l.getIdAdresse() + "', '" + l.getIdproduit()+ "', '" + l.getIdlivreur()+ "', '" +  l.getEtat()+ "','"+l.getIduser()+"')";
+            String req = "insert into livraison (type,adresse,id_produit,etat,iduser) values"
+                    + " ( '" + l.getType() + "', '" + l.getIdAdresse() + "', '" + l.getIdproduit()+ "', '" +  l.getEtat()+ "','"+l.getIduser()+"')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -99,10 +99,10 @@ public class ServiceLivraison {
         return list;
     }
     
-    public List<Livraison> afficherliv() {
+    public List<Livraison> afficherliv(int id) {
          List<Livraison> list = new ArrayList<>();
         try {
-            String req = "select * from livraison where iduser = " + 2;
+            String req = "select * from livraison where iduser = " + id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             

@@ -11,7 +11,18 @@ import services.ReservationService;
 import services.SalleService;
 import utils.DBConnection;
 import static GUI.FXMLController.popAlert;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -73,6 +84,8 @@ public class ReservationController implements Initializable {
     
     @FXML
     private Button afficheR;
+    @FXML
+    private Button btnpdf;
     /**
      * Initializes the controller class.
      */
@@ -201,6 +214,56 @@ public class ReservationController implements Initializable {
     Stage window = (Stage) afficheR.getScene().getWindow();
     window.setScene(new Scene(root));
     window.setTitle("afficher reservation");
+    }
+
+    @FXML
+    private void pdf(ActionEvent event) {
+        ReservationService rs = new ReservationService();
+        ObservableList<Reservation> list = FXCollections.observableArrayList(rs.afficherres(LoginController.idglobal));
+        
+        try{
+            OutputStream file = new FileOutputStream(new File("C:\\Users\\Mortadha\\Desktop\\Reservation.pdf"));
+            Document document = new Document();
+            PdfWriter.getInstance(document, file);
+            document.open();
+            
+            Font font = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD);
+            Paragraph pdfTitle = new Paragraph("Liste des Reservations", font);
+            pdfTitle.setAlignment(Element.ALIGN_CENTER);
+            
+            document.add(pdfTitle);
+            document.add(new Chunk("\n"));
+            PdfPTable table = new PdfPTable(5);
+            table.setHeaderRows(1);
+            table.addCell("Id Reservation");
+            table.addCell("Date");
+            table.addCell("Nombre des places");
+            table.addCell("Id client");
+            table.addCell("Id Salle");
+            list.forEach((item) -> {
+                table.addCell(String.valueOf(item.getIdReservation()));
+                table.addCell(String.valueOf(item.getDate()));
+                table.addCell(String.valueOf(item.getNbrP()));
+                table.addCell(String.valueOf(item.getId_client()));
+                table.addCell(String.valueOf(item.getId_salle()));
+                
+              
+            });
+
+            document.add(table);
+              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+              alert.setTitle("Success");
+            alert.setContentText("Success!");
+            alert.show();
+            document.close();
+
+            file.close();
+        } catch (Exception ex) {
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Cannot export data!");
+            alert.show();
+        }
     }
       
       

@@ -86,12 +86,14 @@ public class LivreurController implements Initializable {
     ObservableList<String> listeTypeRecherchee = FXCollections.observableArrayList("Tout", "nom", "prenom", "numtel", "email");
 
     ServiceLivreur sp= new ServiceLivreur();
-         List<Livreur> livreurs = sp.afficher();
+         
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        refreshlist();
+        recherche_avance();
        
     }    
 public static void Alert(Alert.AlertType type, String title, String header, String text) {
@@ -140,6 +142,7 @@ public static void Alert(Alert.AlertType type, String title, String header, Stri
         ServiceLivreur sp = new ServiceLivreur();
         Livreur p = new Livreur(nom.getText(),prenom.getText(),Integer.parseInt(num.getText()),email.getText());
         sp.ajout(p);
+        refreshlist();
         try {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -210,11 +213,9 @@ public static void Alert(Alert.AlertType type, String title, String header, Stri
        
     }
 
-  
-    @FXML
-    private void afficherl(ActionEvent event) {
-           grid.getChildren().clear();
-            
+  public void refreshlist(){
+       grid.getChildren().clear();
+            List<Livreur> livreurs = sp.afficher();
          
         int column = 0;
         int row = 1;
@@ -248,6 +249,10 @@ public static void Alert(Alert.AlertType type, String title, String header, Stri
         } catch (IOException e) {
             e.printStackTrace();
         }
+  }
+    @FXML
+    private void afficherl(ActionEvent event) {
+          refreshlist();
        
     }
 
@@ -327,18 +332,18 @@ public static void Alert(Alert.AlertType type, String title, String header, Stri
         
     }
     public void recherche_avance(){
-        ObservableList<Livreur> list=FXCollections.observableArrayList(livreurs);
+        ObservableList<Livreur> list=FXCollections.observableArrayList(sp.afficher());
         FilteredList<Livreur> filtereddata=new FilteredList<>(list,b->true);
         int column1 = 0;
         int row1 = 1;
         try {
-            for (int i = 0; i < livreurs.size(); i++) {
+            for (int i = 0; i < sp.afficher().size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/GUI/affichi.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 AffichiController itemController = fxmlLoader.getController();
-                itemController.setData(livreurs.get(i));
+                itemController.setData(sp.afficher().get(i));
 
                 if (column1 == 1) {
                     column1 = 0;
@@ -402,7 +407,7 @@ public static void Alert(Alert.AlertType type, String title, String header, Stri
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 AffichiController itemController = fxmlLoader.getController();
-                itemController.setData(livreurs.get(i));
+                itemController.setData(filtereddata.get(i));
 
                 if (column == 1) {
                     column = 0;

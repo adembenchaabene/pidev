@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="672.0" prefWidth="1122.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProduitFXMLController">
+<AnchorPane id="AnchorPane" fx:id="anchorePane" prefHeight="672.0" prefWidth="1122.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProduitFXMLController">
    <children>
       <Label layoutX="17.0" layoutY="276.0" prefHeight="22.0" prefWidth="42.0" text="Nom">
          <font>
@@ -24,10 +24,10 @@
          </font></Label>
       <TextField fx:id="txtnom" layoutX="113.0" layoutY="276.0" prefHeight="31.0" prefWidth="180.0" />
       <TextField fx:id="txtprix" layoutX="113.0" layoutY="579.0" prefHeight="31.0" prefWidth="180.0" />
-      <TextField fx:id="Iimage" layoutX="113.0" layoutY="131.0" prefHeight="123.0" prefWidth="180.0" />
+      <TextField fx:id="Iimage" layoutX="113.0" layoutY="229.0" prefHeight="25.0" prefWidth="180.0" />
       <TextArea fx:id="txtdescription" layoutX="113.0" layoutY="353.0" prefHeight="149.0" prefWidth="180.0" />
       <TextField fx:id="txtquantite" layoutX="113.0" layoutY="524.0" prefHeight="31.0" prefWidth="180.0" />
-      <Label layoutX="13.0" layoutY="131.0" text="Image">
+      <Label layoutX="13.0" layoutY="229.0" text="Image">
          <font>
             <Font name="Franklin Gothic Demi" size="18.0" />
          </font></Label>
@@ -89,7 +89,7 @@
             <Image url="@../Images/print_64px.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="58.0" fitWidth="50.0" layoutX="14.0" layoutY="152.0">
+      <ImageView fitHeight="58.0" fitWidth="50.0" layoutX="13.0" layoutY="159.0">
          <image>
             <Image url="@../Images/picture_40px.png" />
          </image>
@@ -114,5 +114,6 @@
             <Font name="Franklin Gothic Demi" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="224.0" layoutY="188.0" mnemonicParsing="false" onAction="#addimage" text="upload" />
    </children>
 </AnchorPane>

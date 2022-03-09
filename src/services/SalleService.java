@@ -64,6 +64,31 @@ public class SalleService implements I_chariot<Salle>{
             ex.printStackTrace();
         }
         return null; }
+    public Salle findById(int id){
+        Salle s=new Salle();
+        String query = "SELECT * FROM Salle where idSalle="+id;
+
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+
+            while(result.next()) {
+                s=(new Salle(
+                        result.getInt("idSalle"),
+                        result.getString("nom"),
+                        result.getFloat("prixSalle"),
+                        result.getString("image"),
+                        result.getInt("capacite")
+                        
+                ));
+            }
+            return s;
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null; 
+    }
 
    
      

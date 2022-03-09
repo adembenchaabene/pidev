@@ -90,12 +90,13 @@ public class ModifierProduitController implements Initializable {
     @FXML
     private TextField txtinom;
 
-    
+    Produit p=new Produit();
+    List<Produit> produits = new ArrayList<>();
     @FXML
     void getvalue(ActionEvent event) {
         try {
             Connection cnx = DBConnection.getInstance().getCon();
-            List<Produit> produits = new ArrayList<>();
+            
             Produit p = new Produit();
             int value = Integer.parseInt(list.getValue());
             System.out.println(value);
@@ -108,6 +109,7 @@ public class ModifierProduitController implements Initializable {
               p.setPrix(rs.getInt("prix"));
               p.setDescription(rs.getString("description"));
               p.setImage(rs.getString("image"));
+              p.setId_categorie(rs.getInt("id_categ"));
               produits.add(p);        
               txtinom.setText(p.getNomProduit());
               txtiquantite.setText(String.valueOf(p.getQuantite()));
@@ -126,9 +128,12 @@ public class ModifierProduitController implements Initializable {
     @FXML
     void modifierProduit(ActionEvent event) {
         ProduitService ps = new ProduitService();
+        
         int value = Integer.parseInt((String) list.getValue());
-        Produit pg = new Produit (value,txtinom.getText(),Integer.parseInt(txtiquantite.getText()),Float.parseFloat(txtiprix.getText()),5,txtdescription.getText(),Iimage1.getText());
+        Produit pg = new Produit (value,txtinom.getText(),Integer.parseInt(txtiquantite.getText()),Float.parseFloat(txtiprix.getText()),produits.get(0).getId_categorie(),txtdescription.getText(),Iimage1.getText());
+        
         ps.modifer(pg);
+        
         list();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");

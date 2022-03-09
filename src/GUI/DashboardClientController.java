@@ -79,11 +79,7 @@ public class DashboardClientController implements Initializable {
             stage.show();
     }
 
-    @FXML
-    private void gotoadresse() {
-        setUi("ClientAdresse");
-        new FadeIn(context).play();
-    }
+    
 
     @FXML
     private void gotoReservation() {
