@@ -48,7 +48,7 @@
                   <Insets />
                </VBox.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#gotoCategorie" opacity="0.85" prefHeight="55.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Categorie" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#gotoCategorie" opacity="0.85" prefHeight="55.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Produit" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,6 +77,18 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoConsulterLivraison" opacity="0.85" prefHeight="55.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Consulter Livraison" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/sold.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
             </JFXButton>
             <JFXButton buttonType="RAISED" onAction="#btnLogOut" opacity="0.85" prefHeight="55.0" prefWidth="255.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="LOGOUT" textFill="WHITE">
                <font>

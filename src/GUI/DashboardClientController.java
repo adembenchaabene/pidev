@@ -100,4 +100,12 @@ public class DashboardClientController implements Initializable {
     }
 
     
+
+    @FXML
+    private void gotoConsulterLivraison(ActionEvent event) {
+        setUi("livraison");
+        new FadeIn(context).play();
+    }
+
+    
 }

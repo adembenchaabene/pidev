@@ -56,7 +56,7 @@ public class ClientCategorieController implements Initializable {
      * Initializes the controller class.
      */
         @FXML
-    private ComboBox<Integer> list;
+    private ComboBox<String> list;
 
     @FXML
     private ScrollPane scroll;
@@ -74,7 +74,7 @@ public class ClientCategorieController implements Initializable {
     private Button btnpanier;
     ProduitService ps= new ProduitService();
    List<Produit> produits =ps.afficher();
-    ObservableList<Integer> options=FXCollections.observableArrayList();
+    ObservableList<String> options=FXCollections.observableArrayList();
      
 
     @FXML
@@ -83,9 +83,9 @@ try {
             Connection cnx = DBConnection.getInstance().getCon();
             List<Categorie> categories = new ArrayList<>();
             Categorie c = new Categorie();
-            int value = list.getValue();
+            String value = list.getValue();
             System.out.println(value);
-            String req = "select * from categorie where idCateg = " +value ;
+            String req = "select * from categorie where nomCateg = " +value ;
             Statement cs = cnx.createStatement();
             ResultSet rs = cs.executeQuery(req);
             while(rs.next()){                      
@@ -108,7 +108,7 @@ try {
             PreparedStatement cs = cnx.prepareStatement(req);
             ResultSet rs = cs.executeQuery(req);
             while(rs.next()){
-                options.add(rs.getInt("idCateg"));
+                options.add(rs.getString("nomCateg"));
                 
             }
             list.setItems(options);
@@ -174,7 +174,7 @@ Parent root = FXMLLoader .load(getClass().getResource("/GUI/PanierFXML.fxml"));
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         fillCombo();
-        list();
+        rechaff(produits);
     } 
     @FXML
     void AfficherProduit(ActionEvent event) {
