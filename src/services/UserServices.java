@@ -262,6 +262,33 @@ public class UserServices implements Iservices<User> {
         }
         return u;
     }
+              public User findById(int id) {
+        User u = null;
+        String req = "SELECT * FROM user WHERE idUser =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                u = new User(
+                        resultSet.getInt("idUser"),
+                        resultSet.getString("nom"),
+                        resultSet.getString("prenom"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"));
+                if(resultSet.getString("role").equals("Admin")){
+                    u.setRole(Roles.Admin);
+                }
+                else{
+                    u.setRole(Roles.Client);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return u;
+    }
               
               
            

@@ -8,6 +8,7 @@ package GUI;
 import Entites.Categorie;
 import Entites.Panier;
 import Entites.Produit;
+import Entites.User;
 import services.CategorieService;
 import services.ProduitService;
 import utils.DBConnection;
@@ -43,7 +44,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import services.UserServices;
 import services.panierService;
+import utils.Mailapi;
 
 /**
  * FXML Controller class
@@ -183,6 +186,8 @@ Parent root = FXMLLoader .load(getClass().getResource("/GUI/PanierFXML.fxml"));
     }
     public void rechaff(List<Produit> produits)
     {
+        UserServices us=new UserServices();
+        User u=us.findById(LoginController.idglobal);
         panierService panierservice=new panierService();
         Panier panier=new Panier();
      int column = 0;
@@ -206,7 +211,7 @@ Parent root = FXMLLoader .load(getClass().getResource("/GUI/PanierFXML.fxml"));
                     
                     @Override
                     public void handle(ActionEvent event) {
-                        
+                        Mailapi.send("ichariottest11@gmail.com", "ichariot123456", u.getEmail(), "Nouveau Produit", "Produit ajouter au panier");
                         panierservice.ajouteer(panier);
                     }
                 });
